@@ -1,0 +1,54 @@
+﻿<br />
+<div class="row" cg-busy="promise">
+    <!--<h3 class="text-center text-info">This feature is not enable yet</h3>-->
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Imported Transaction List (CSV) Log</div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <form ng-submit="filter()">
+                        <div class="col-sm-11">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="searchRequest.Keyword" required="required" placeholder="Search by Exporter ID, Transaction Id" ng-change="reset()" />
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-success glyphicon glyphicon-search"></button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12  table-responsive">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Exporter ID</th>
+                                    <th>Amount</th>
+                                    <th>Transaction ID</th>
+                                    <th>Imported By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="l in data.list track by $index">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{l.TransectionDate | date}}</td>
+                                    <td>{{l.TransectionParticular}}</td>
+                                    <td>{{l.Deposit}}</td>
+                                    <td>{{l.TransectionId}}</td>
+                                    <td>{{l.ImportedBy}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div ng-include="'app/views/paging.html'"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

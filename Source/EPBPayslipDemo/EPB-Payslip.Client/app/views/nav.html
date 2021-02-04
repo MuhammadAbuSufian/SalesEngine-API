@@ -1,0 +1,19 @@
+﻿<nav class="nav navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="dashboard"><img src="app/images/logo.png" /> <strong>EPB Payslip</strong></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse" ng-controller="AppController">
+            
+            <ul ng-show="isLoggedIn" class="nav navbar-nav pull-right">
+                <li><a style="cursor: pointer" ng-click="logout()">Logout({{user.Username}})</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

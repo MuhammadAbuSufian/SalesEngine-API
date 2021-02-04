@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Client", "01 Client", "{E0FB027E-F8FB-43EC-A145-2EBC600E1F5F}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "EPB-Payslip.Client", "EPB-Payslip.Client\", "{80F6B65F-C2C7-4F88-A084-EBD66D5AC24D}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52735"
+		Debug.AspNetCompiler.PhysicalPath = "EPB-Payslip.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52735\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52735"
+		Release.AspNetCompiler.PhysicalPath = "EPB-Payslip.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52735\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52735"
+		SlnRelativePath = "EPB-Payslip.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "EPB-Playslip.Client.Static", "EPB-Playslip.Client.Static\", "{C606445E-6E24-476A-A8E7-90BD153701A4}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52751"
+		Debug.AspNetCompiler.PhysicalPath = "EPB-Playslip.Client.Static\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52751\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52751"
+		Release.AspNetCompiler.PhysicalPath = "EPB-Playslip.Client.Static\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52751\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52751"
+		SlnRelativePath = "EPB-Playslip.Client.Static\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80F6B65F-C2C7-4F88-A084-EBD66D5AC24D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F6B65F-C2C7-4F88-A084-EBD66D5AC24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C606445E-6E24-476A-A8E7-90BD153701A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C606445E-6E24-476A-A8E7-90BD153701A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{80F6B65F-C2C7-4F88-A084-EBD66D5AC24D} = {E0FB027E-F8FB-43EC-A145-2EBC600E1F5F}
+		{C606445E-6E24-476A-A8E7-90BD153701A4} = {E0FB027E-F8FB-43EC-A145-2EBC600E1F5F}
+	EndGlobalSection
+EndGlobal

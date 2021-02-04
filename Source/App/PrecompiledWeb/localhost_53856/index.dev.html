@@ -1,0 +1,183 @@
+﻿<!Doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title data-ng-bind="'EPB Payslip | ' + $state.current.data.pageTitle"></title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/ng-grid.min.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="Content/angular-busy.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="app/styles/style.css" />
+
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+
+</head>
+<body ng-controller="AppController">
+
+    <header ng-include="'app/views/nav.html'"></header>
+
+    <div class="container">
+        <div class="alertStyle alert-block text-center fade out" ng-class="{in: alert.isAlert}">
+            <span ng-hide="alert.autoHide">
+                <span uib-alert ng-class="'alert-' + (alert.type || 'warning')" close="alert.close()">{{alert.msg}} </span>
+            </span>
+            <span ng-show="alert.autoHide">
+                <span uib-alert ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</span>
+            </span>
+        </div>
+    </div>
+
+
+    <div ui-view class="container"></div>
+    <br />
+    <br />
+    <br />
+    <footer ng-include="'app/views/footer.html'"></footer>
+
+
+
+    <!-- Scripts -->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <!-- angular -->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+
+
+    <!-- angular-ui-bootstrap -->
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/angular-ui/sortable.js"></script>
+
+    <script src="Scripts/ng-file-upload-all.min.js"></script>
+
+    <!-- checklist -->
+    <script src="Scripts/checklist-model.js"></script>
+
+    <!-- busy screen -->
+    <script src="Scripts/angular-busy.min.js"></script>
+
+
+
+    <!-- app scripts -->
+    <script src="app/scripts/app.config.js"></script>
+    <script src="app/scripts/auth/auth.config.js"></script>
+    <script src="app/scripts/user/user.config.js"></script>
+    <script src="app/scripts/home/home.config.js"></script>
+    <script src="app/scripts/dashboard/dashboard.config.js"></script>
+    <script src="app/scripts/service/service.config.js"></script>
+    <script src="app/scripts/account/account.config.js"></script>
+    <script src="app/scripts/import/import.config.js"></script>
+
+    <script src="app/scripts/importLog/importLog.config.js"></script>
+
+
+    <script src="app/scripts/report/report.config.js"></script>
+
+    <script src="app/scripts/setup/setup.config.js"></script>
+
+
+    <script src="app/scripts/app.directive.js"></script>
+
+
+    <script src="app/scripts/app.service.js"></script>
+    <script src="app/scripts/url.service.js"></script>
+    <script src="app/scripts/alert.service.js"></script>
+    <script src="app/scripts/localstorage.service.js"></script>
+    <script src="app/scripts/auth/auth.http.service.js"></script>
+    <script src="app/scripts/common.http.service.js"></script>
+    <script src="app/scripts/auth/auth.service.js"></script>
+    <script src="app/scripts/auth/role/role.service.js"></script>
+    <script src="app/scripts/auth/resource/resource.service.js"></script>
+    <script src="app/scripts/auth/permission/permission.service.js"></script>
+    <script src="app/scripts/user/user.service.js"></script>
+    <script src="app/scripts/base.service.js"></script>
+
+
+    <script src="app/scripts/app.controller.js"></script>
+    <script src="app/scripts/auth/auth.controller.js"></script>
+    <script src="app/scripts/auth/role/role.controller.js"></script>
+    <script src="app/scripts/auth/resource/resource.controller.js"></script>
+    <script src="app/scripts/auth/permission/permission.controller.js"></script>
+    <script src="app/scripts/user/user.controller.js"></script>
+    <script src="app/scripts/base.controller.js"></script>
+    <script src="app/scripts/home/home.controller.js"></script>
+    <script src="app/scripts/dashboard/dashboard.controller.js"></script>
+    <script src="app/scripts/service/service.controller.js"></script>
+    <script src="app/scripts/service/service-detail.controller.js"></script>
+    <script src="app/scripts/account/account.controller.js"></script>
+    <script src="app/scripts/import/import.controller.js"></script>
+
+    <script src="app/scripts/importLog/importLog.controller.js"></script>
+    <script src="app/scripts/setup/setting.controller.js"></script>
+
+    <script src="app/scripts/report/report.controller.js"></script>
+    <script src="app/scripts/setup/service-type.controller.js"></script>
+    <script src="app/scripts/setup/issue-name.controller.js"></script>
+    <script src="app/scripts/setup/service-issue-type.controller.js"></script>
+    <script src="app/scripts/setup/exporter.controller.js"></script>
+    <script src="app/scripts/setup/temp-exporter.controller.js"></script>
+    <script src="app/scripts/report/account-report.controller.js"></script>
+    <script src="app/scripts/report/service-report.controller.js"></script>
+    <script src="app/scripts/report/payslip-report.controller.js"></script>
+
+
+    <script src="app/scripts/modal/confirm.modal.controller.js"></script>
+    <script src="app/scripts/modal/account-print.modal.controller.js"></script>
+    <script src="app/scripts/modal/service-print.modal.controller.js"></script>
+    <script src="app/scripts/modal/all-service-print.modal.controller.js"></script>
+    <script src="app/scripts/modal/log.modal.controller.js"></script>
+    <script src="app/scripts/modal/account-report-print.modal.controller.js"></script>
+    <script src="app/scripts/modal/payslip-report-print.modal.controller.js"></script>
+
+    <!-- app scripts end -->
+
+
+
+    <script>
+        $(document)
+            .on('click',
+                function () {
+                    $('.collapse').collapse('hide');
+                });
+    </script>
+
+    <script>
+        $(document)
+            .ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+    </script>
+</body>
+</html>

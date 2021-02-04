@@ -1,0 +1,242 @@
+﻿<br/>
+<div class="row" cg-busy="promise">
+    <div class="col-sm-12">
+        <div class="panel-group">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Account
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form ng-submit="checkAvailability()" ng-validate="true">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Payment Method <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.PaymentMethod" required="required" ng-options="i.Id as i.Name for i in paymentMethods" ng-change="toggleFields()">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Bank Name <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.BankName" ng-hide="isPayOrder" placeholder="Bank name" ng-required="!isPayOrder" ng-options="i.Name as i.Name for i in banks" ng-change="bindBankProperties()">
+                                    </select>
+                                    <input type="text" class="form-control" ng-model="model.BankName" placeholder="Bank Name" ng-show="isPayOrder" ng-required="isPayOrder"/>
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-3" ng-hide="isPayOrder">
+                                <div class="form-group">
+                                    <label>Branch Name </label>
+                                    <input type="text" class="form-control" ng-model="model.BranchName">
+                                </div>
+                            </div>-->
+                            <div class="col-sm-3" ng-hide="isPayOrder">
+                                <div class="form-group">
+                                    <label>Account No <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.AccountNumber" placeholder="Account No" ng-disabled="true" ng-required="!isPayOrder">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label ng-hide="isPayOrder">Account Name <span class="text-danger">*</span></label>
+                                    <label ng-show="isPayOrder">Pay To / Account To <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.AccountName" placeholder="Account Name" ng-disabled="!isPayOrder" required="required">
+                                </div>
+                            </div>
+                            <div class="col-sm-3" ng-show="isPayOrder">
+                                <div class="form-group">
+                                    <label>Exporter Pay Order Account No<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.AccountNumber" placeholder="Exporter Pay Order Account No" ng-required="isPayOrder">
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Deposit Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" ng-model="model.DepositDate" 
+                                           ng-model-options="{timezone: 'utc+6'}" ng-blur="transactionAmount(model)" required="required">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Exporter No <span class="text-danger">*</span></label>
+                                    <!--<input type="text" class="form-control" ng-model="model.ExporterId" placeholder="Start Typing Exporter No">-->
+                                    <!--<select class="form-control" ng-model="model.ExporterId" ng-options="i.Id as i.Name for i in data.exporterDropdown" ng-change="loadExporter()" required="required">
+                                        <option value=""></option>
+                                    </select>-->
+                                    <!--<input type="text" ng-model="SelectedExporter"
+                                               typeahead-on-select="onSelect($item, $model, $label)"
+                                               typeahead-editable="false"
+                                               uib-typeahead="i as i.Name for i in data.exporterDropdown | filter:$viewValue | limitTo:10" class="form-control" required="required"/>-->
+                                    <input type="text" class="form-control" ng-model="SelectedExporter"
+                                           typeahead-on-select="onSelect($item, $model, $label)"
+                                           typeahead-editable="false"
+                                           uib-typeahead="i as i.Name for i in loadExporterDropdown($viewValue)" 
+                                           typeahead-loading="loadingExporters" required="required">
+                                </div>
+                            </div>
+
+                                                        
+                            
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label ng-hide="isPayOrder">Transaction ID / Deposit Slip No <span class="text-danger">*</span></label>
+                                    <label ng-show="isPayOrder">Pay Order No <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.TransectionNumber" ng-blur="transactionAmount(model)" required="required">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Total Amount <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.TotalAmount" required="required" ng-disabled="true">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Depositor Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.DepositorName" required="required" placeholder="Commercial Manager Name">
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Depositor Address</label>
+                                    <input type="text" class="form-control" ng-model="model.DepositorAddress" placeholder="Commercial Manager Address">
+                                </div>
+                            </div>-->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Depositor Phone <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.DepositorPhone" required="required" placeholder="Commercial Manager Phone">
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Amount (In Words)</label>
+                                    <input type="text" class="form-control" ng-model="model.AmountInWords" placeholder="Amount in words">
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <br/>
+                                    <button type="submit" ng-hide="isUpdateMode" ng-disabled="!model.TotalAmount" class="btn btn-success glyphicon glyphicon-plus" style="margin-right:5px"> SAVE</button>
+                                    <button type="reset" ng-hide="isUpdateMode" class="btn btn-warning glyphicon glyphicon-minus"> RESET</button>
+                                    <button type="submit" ng-show="isUpdateMode" class="btn btn-warning glyphicon glyphicon-plus"> UPDATE</button>
+                                    <button type="button" ng-show="isUpdateMode" ng-click="cancel()" class="btn btn-danger"> CANCEL</button>
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Upload Bank Deposit Slip: </label>
+                                    <input type="file" ng-model="model.BankDepositSlip"/>
+                                </div>
+                            </div>-->
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row text-danger">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <div>
+                                    Exporter Name:<strong> {{exporter.CompanyOrFactoryName}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <div>
+                                    Total Deposited:<strong> {{exporter.TotalDepositedAmount}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <div>
+                                    Service Taken:<strong> {{exporter.TotalServiceTakenAmount}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <div>
+                                    Current Balance:<strong> {{exporter.CurrentBalance}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <form ng-submit="filter()">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" ng-model="searchRequest.Keyword" ng-change="reset()" placeholder="Search by Exporter No, Transection Id, Depositor Name" required="required"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-1">
+                                <button class="btn btn-success" type="submit">
+                                    <span class="glyphicon glyphicon-search text-center"></span>
+                                </button>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <select class="form-control" ng-model="searchRequest.TransectionStatus" ng-change="filter()" ng-options="i.Id as i.Name for i in transectionStatus"></select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>EPB Slip No</th>
+                                    <th>Exporter No</th>
+                                    <th>Transection ID</th>
+                                    <th>Deposit Date</th>
+                                    <th>Bank Name</th>
+                                    <th>Total Amount</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="l in data.list">
+                                    <td>{{l.EpbPaymentReceiptNumber}}</td>
+                                    <td>{{l.ExporterNumber}}</td>
+                                    <td>{{l.TransectionNumber}}</td>
+                                    <td>{{l.DepositDate | date}}</td>
+                                    <td>{{l.BankName}}</td>
+                                    <td>{{l.TotalAmount}}</td>
+                                    <td>{{l.TransectionStatusName}}</td>
+                                    <td class="text-center">
+                                        <button type="button" ng-click="edit(l.Id)" ng-disabled="l.TransectionStatus==2" class="btn btn-link">Edit</button>
+                                        <button type="button" ng-click="verify('md',l, 'verify')" ng-disabled="l.TransectionStatus==2" class="btn btn-link"><span ng-show="l.TransectionStatus!=2">Verify</span> <span ng-show="l.TransectionStatus==2">Verified</span></button>
+                                        <!--<button type="button" ng-click="trash('md',l, 'trash')" ng-hide="l.TransectionStatus==2" class="btn btn-link glyphicon glyphicon-trash"></button>-->
+                                        <button title="Print" type="button" 
+                                                ng-click="printModal('lg',l.Id, 'account-','Account', false)"
+                                                ng-show="l.TransectionStatus==2" 
+                                                class="btn btn-link glyphicon glyphicon-print"></button>
+                                        <button title="Delete" type="button"
+                                           ng-click="trashAccount('md',l, 'trash')" 
+                                           ng-show="user.RoleNames[0]=='SystemAdmin'"
+                                           class="btn btn-link glyphicon glyphicon-trash"></button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div ng-include="'app/views/paging.html'"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

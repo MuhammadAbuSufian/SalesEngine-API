@@ -1,0 +1,262 @@
+﻿<br />
+<div class="row" cg-busy="promise">
+    <div class="col-sm-12">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <span>Exporter Setup</span> <!--<span ng-hide="isDealingAssistantUser" class="pull-right"> <a  ng-href="javascript:(void)" class="glyphicon glyphicon-plus" ng-click="toggleForm(true)"> NEW EXPORTER</a></span>-->
+                        </div>
+                    </div>
+                    <div class="panel-body" ng-show="expandForm">
+                        <form ng-submit="save()">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Exporter Type <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.ExporterCategory"
+                                            ng-disabled="isDealingAssistantUser || (isUpdateMode)"
+                                            ng-options="i.Id as i.Name for i in exporterType"
+                                            ng-change="generateTemportyExporterNumner()" required="required">
+                                        <option ng-value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Registration Type <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.ExporterType" required="required"
+                                            ng-disabled="isDealingAssistantUser || (isUpdateMode && model.ExporterType=='Permanent')"
+                                            ng-change="generateTemportyExporterNumner()">
+                                        <option ng-value=""></option>
+                                        <option ng-value="Permanent">Permanent</option>
+                                        <option ng-value="Temporary">Temporary</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Registration Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" ng-model="model.RegDate" ng-disabled="isUpdateMode" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Registration Valid Till <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" ng-model="model.PeriodofValidation" required="required" ng-disabled="isUpdateMode && isDealingAssistantUser" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Exporter No <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.ExporterNumber" required="required"
+                                           ng-disabled="isDealingAssistantUser || (isUpdateMode && model.ExporterType=='Permanent')" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Exporter Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.CompanyOrFactoryName" required="required" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Corporate Address</label>
+                                    <input type="text" class="form-control" ng-model="model.CorporateAddress" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Factory Type <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.FactoryType" ng-options="i for i in factoryTypes" required="required" ng-disabled="isDealingAssistantUser">
+                                        <option ng-value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Factory Address</label>
+                                    <input type="text" class="form-control" ng-model="model.FactoryAddress" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Primary Person Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.PrimaryPersonName" required="required" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Primary Person Phone <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.PrimaryPersonPhone" required="required" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Primary Person Address </label>
+                                    <input type="text" class="form-control" ng-model="model.PrimaryPersonAddress" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Secondary Person Name</label>
+                                    <input type="text" class="form-control" ng-model="model.SecondaryPersonName" ng-disabled="isDealingAssistantUser"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Secondary Person Phone</label>
+                                    <input type="text" class="form-control" ng-model="model.SecondaryPersonPhone" ng-disabled="isDealingAssistantUser"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Secondary Person Address</label>
+                                    <input type="text" class="form-control" ng-model="model.SecondaryPersonAddress" ng-disabled="isDealingAssistantUser"/>
+                                </div>
+                            </div>-->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Commercial Manager Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.CommercialManagerName" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Commercial Manager Phone <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="model.CommercialManagerPhone" required="required" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Commercial Manager Address </label>
+                                    <input type="text" class="form-control" ng-model="model.CommercialManagerAddress" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Description of Goods</label>
+                                    <input type="text" class="form-control" ng-model="model.GoodsDescription" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>HS Code</label>
+                                    <input type="text" class="form-control" ng-model="model.HsCode" ng-disabled="isDealingAssistantUser" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Service Office <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.ServiceOffice" ng-change="bindEpbRefNo()" ng-options="i.Id as i.Name for i in serviceOffices" required="required" ng-disabled="isDealingAssistantUser">
+                                        <option ng-value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>EPB Reference No <span class="text-danger">*</span></label>
+                                    <select class="form-control" ng-model="model.EpbReferenceNo" ng-options="i.Id as i.Name for i in epbRefNumbers" ng-disabled="true" required="required"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Total Deposited</label>
+                                    <input type="text" class="form-control" ng-model="model.TotalDepositedAmount" ng-disabled="true" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Service Taken</label>
+                                    <input type="text" class="form-control" ng-model="model.TotalServiceTakenAmount" ng-disabled="true" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Current Balance</label>
+                                    <input type="text" class="form-control" ng-model="model.CurrentBalance" ng-disabled="true" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <br />
+                                    <button type="submit" ng-hide="isUpdateMode" class="btn btn-success glyphicon glyphicon-plus"
+                                            ng-disabled="model.ExporterType=='Permanent'">
+                                        SAVE
+                                    </button>
+                                    <button type="submit" ng-show="isUpdateMode" class="btn btn-warning glyphicon glyphicon-plus"> UPDATE</button>
+                                    <button type="button" ng-show="isUpdateMode" ng-click="cancel()" class="btn btn-danger"> CANCEL</button>
+                                    <button type="button" ng-hide="isUpdateMode" ng-click="toggleForm(false)" class="btn btn-warning"> CLOSE</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 text-danger">
+                                <div class="form-group">
+                                    <br />
+                                    <label ng-show="!isUpdateMode && model.ExporterType=='Permanent'">
+                                        You are unauthorirized to add permanent exporter.
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <form ng-submit="search()">
+                                    <div class="col-sm-11">
+                                        <input type="search" name="Search" ng-model="searchRequest.Keyword" ng-change="reset()" class="form-control" placeholder="Search by Exporter No, Exporter Name" />
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button class="btn btn-success" type="submit">
+                                            <span class="glyphicon glyphicon-search text-center"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-2">
+                                <p style="font-size:large;padding-top:10px"> <span ng-hide="isDealingAssistantUser" class="pull-left"> <a ng-href="javascript:(void)" class="glyphicon glyphicon-plus" ng-click="toggleForm(true)"></a></span></p>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <tr class="">
+                                    <th>Exporter Type</th>
+                                    <th>Exporter No</th>
+                                    <th>Exporter Name</th>
+                                    <th>Reg Valid Till</th>
+                                    <th>Service Office</th>
+                                    <th>Total Deposited</th>
+                                    <th>Service Taken</th>
+                                    <th>Current Balance</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr ng-repeat="l in data.list track by $index">
+                                    <td>{{l.ExporterCategoryName}}</td>
+                                    <td>{{l.ExporterNumber}}</td>
+                                    <td>{{l.CompanyOrFactoryName}}</td>
+                                    <td>{{l.PeriodofValidation | date}}</td>
+                                    <td>{{l.ServiceOfficeName}}</td>
+                                    <td>{{l.TotalDepositedAmount}}</td>
+                                    <td>{{l.TotalServiceTakenAmount}}</td>
+                                    <td>{{l.CurrentBalance}}</td>
+                                    <td>
+                                        <a ng-href="javascript:(void)" ng-click="edit(l.Id)" class="glyphicon glyphicon-edit"></a>
+                                        &nbsp;&nbsp;
+                                        <a ng-href="javascript:(void)" ng-show="user.RoleNames[0]=='SystemAdmin'" ng-click="trash('md',l, 'trash')" class="glyphicon glyphicon-trash"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div ng-include="'app/views/paging.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

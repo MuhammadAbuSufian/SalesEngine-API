@@ -1,0 +1,3161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GspDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActiveState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="StatusResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Culture">
+          <Key>
+            <PropertyRef Name="Culture" />
+          </Key>
+          <Property Name="Culture" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DistributorNo" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ActiveStateId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="PsId" Type="int" />
+          <Property Name="PrimaryPersonId" Type="uniqueidentifier" />
+          <Property Name="SecondaryPersonId" Type="uniqueidentifier" />
+          <Property Name="IdentityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Changed" Type="datetime" />
+          <Property Name="ChangedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="DistributorUserProfile">
+          <Key>
+            <PropertyRef Name="DistributorId" />
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="DistributorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserProfileId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Changed" Type="datetime" Nullable="false" />
+          <Property Name="ChangedBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DocumentContent" Type="varbinary(max)" Nullable="false" />
+          <Property Name="MimeType" Type="nvarchar" MaxLength="100" />
+          <Property Name="AwsKey" Type="varchar(max)" />
+          <Property Name="IsDocumentCleaned" Type="bit" />
+        </EntityType>
+        <EntityType Name="Exporter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExporterNo" Type="varchar" MaxLength="7" StoreGeneratedPattern="Computed" />
+          <Property Name="CompanyOrFactoryName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="FactoryTypeId" Type="int" />
+          <Property Name="CorporateAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="CorporateAddressPsId" Type="int" />
+          <Property Name="CorporateAddressDistrictId" Type="int" />
+          <Property Name="CorporateAddressCountryId" Type="int" />
+          <Property Name="FactoryAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="FactoryAddressPsId" Type="int" />
+          <Property Name="FactoryAddressDistrictId" Type="int" />
+          <Property Name="FactoryAddressCountryId" Type="int" />
+          <Property Name="PrimaryPersonId" Type="uniqueidentifier" />
+          <Property Name="SecondaryPersonId" Type="uniqueidentifier" />
+          <Property Name="AssociationMembershipNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="AssociationBinNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="AssociationTradeLicense" Type="nvarchar" MaxLength="200" />
+          <Property Name="AssociationTinNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="PeriodofValidation" Type="datetime" />
+          <Property Name="ActivityDescription" Type="nvarchar(max)" />
+          <Property Name="IndustrialProcessDescription" Type="nvarchar(max)" />
+          <Property Name="GoodsDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="HsCode" Type="nvarchar" MaxLength="200" />
+          <Property Name="ActiveStateId" Type="int" Nullable="false" />
+          <Property Name="EpbRegistrationNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="RegistrationValidSince" Type="datetime" />
+          <Property Name="IdentityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsUndertakingByExporter" Type="bit" Nullable="false" />
+          <Property Name="RegDate" Type="datetime" />
+          <Property Name="Bonded" Type="nvarchar" MaxLength="50" />
+          <Property Name="ErcNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BolRegNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FireLicNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BondLicNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Changed" Type="datetime" Nullable="false" />
+          <Property Name="ChangedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExporterType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FactoryType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormANo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ExporterId" Type="uniqueidentifier" />
+          <Property Name="DistributorId" Type="uniqueidentifier" />
+          <Property Name="FormANoInt" Type="int" Nullable="false" />
+          <Property Name="FormAStateId" Type="int" Nullable="false" />
+          <Property Name="ImporterName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImporterAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="FreightBlNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="FreightVessel" Type="nvarchar" MaxLength="200" />
+          <Property Name="FreightContainerNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="FreightRoute" Type="nvarchar" MaxLength="200" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="AssociationRegNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExpNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="EpbReferenceNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="IssueDate" Type="datetime" />
+          <Property Name="NotesReceiving" Type="nvarchar" MaxLength="500" />
+          <Property Name="NotesVerification" Type="nvarchar" MaxLength="500" />
+          <Property Name="NotesDelivery" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="City" Type="nvarchar" MaxLength="200" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="BillOfLadingDate" Type="datetime" />
+          <Property Name="ItemNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarksAndNoOfPackages" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoAndKindOfPackages" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExpDate" Type="datetime" />
+          <Property Name="LcNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="LcDate" Type="datetime" />
+          <Property Name="BbLcNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BbLcDate" Type="datetime" />
+          <Property Name="BillOfExportNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillOfExportDate" Type="datetime" />
+          <Property Name="Origin" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ProductCodeId" Type="int" />
+          <Property Name="Quantities" Type="int" />
+          <Property Name="GrossWeight" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="InvoiceValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollectorName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CollectorTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollectorPhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EpbOfficerName" Type="nvarchar" MaxLength="200" />
+          <Property Name="EpbOfficerTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="EpbOfficeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorizePersonName" Type="nvarchar" MaxLength="200" />
+          <Property Name="AuthorizePersonTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentConfirmationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="ServiceTime" Type="int" />
+          <Property Name="DeclarationByExporterDate" Type="datetime" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Changed" Type="datetime" Nullable="false" />
+          <Property Name="ChangedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NotesSubmissionByExporter" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="FormAAssign">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="DistributorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormAFrom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormATo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Total" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormACategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormAId" Type="uniqueidentifier" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ProductCodeId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="FormADocument">
+          <Key>
+            <PropertyRef Name="FormAId" />
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="FormAId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocumentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormADocumentTypeId" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="Changed" Type="datetime" />
+          <Property Name="ChangedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="FormADocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FormAIssue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IssueDate" Type="datetime" Nullable="false" />
+          <Property Name="ExporterNo" Type="varchar" MaxLength="50" />
+          <Property Name="ExporterName" Type="nvarchar" MaxLength="500" />
+          <Property Name="FormRange" Type="varchar" MaxLength="50" />
+          <Property Name="Total" Type="int" Nullable="false" />
+          <Property Name="ExporterId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DistributorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DistributorUserId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="FormALog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FromAId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormAStateId" Type="int" Nullable="false" />
+          <Property Name="Descripton" Type="nvarchar" MaxLength="350" />
+          <Property Name="ActionDate" Type="datetime" Nullable="false" />
+          <Property Name="ActionBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormAState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NameResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="PermissionDataId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EditPermissionDataId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="OfficePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobilePhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Code" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceKey" />
+          </Key>
+          <Property Name="ResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ResourceDetail">
+          <Key>
+            <PropertyRef Name="ResourceKey" />
+            <PropertyRef Name="Culture" />
+          </Key>
+          <Property Name="ResourceKey" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Culture" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResourceValue" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Thana">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PrimaryPersonId" Type="uniqueidentifier" />
+          <Property Name="SecondaryPersonId" Type="uniqueidentifier" />
+          <Property Name="Organization" Type="nvarchar" MaxLength="500" />
+          <Property Name="CultureCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveStateId" Type="int" Nullable="false" />
+          <Property Name="DocumentId" Type="uniqueidentifier" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Changed" Type="datetime" Nullable="false" />
+          <Property Name="ChangedBy" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActiveState_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="ActiveState">
+              <PropertyRef Name="StatusResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_ActiveState">
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActiveState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="ActiveStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Person_Primary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="PrimaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Person_Secondary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="SecondaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Thana">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="PsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_UserProfile1">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributorUserProfile_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="DistributorUserProfile" Type="Self.DistributorUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistributorUserProfile">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributorUserProfile_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="DistributorUserProfile" Type="Self.DistributorUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistributorUserProfile">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_ActiveState">
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActiveState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="ActiveStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Country4">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CorporateAddressCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Country5">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryAddressCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CorporateAddressDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_District1">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryAddressDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_FactoryType">
+          <End Role="FactoryType" Type="Self.FactoryType" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactoryType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Person_Primary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="PrimaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Person_Secondary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="SecondaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Thana">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CorporateAddressPsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Thana1">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryAddressPsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_UserProfile1">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactoryType_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="FactoryType" Type="Self.FactoryType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="FactoryType">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_Exporter">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="0..1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_FormAState">
+          <End Role="FormAState" Type="Self.FormAState" Multiplicity="1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormAState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="FormAStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_UserProfile1">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAAssign_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="FormAAssign" Type="Self.FormAAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAAssign">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAAssign_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormAAssign" Type="Self.FormAAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAAssign">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormACategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="FormACategory" Type="Self.FormACategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormACategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormACategory_FormA">
+          <End Role="FormA" Type="Self.FormA" Multiplicity="0..1" />
+          <End Role="FormACategory" Type="Self.FormACategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormACategory">
+              <PropertyRef Name="FormAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormACategory_ProductCode">
+          <End Role="ProductCode" Type="Self.ProductCode" Multiplicity="0..1" />
+          <End Role="FormACategory" Type="Self.FormACategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormACategory">
+              <PropertyRef Name="ProductCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocument_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="FormADocument" Type="Self.FormADocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormADocument">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocument_FormA">
+          <End Role="FormA" Type="Self.FormA" Multiplicity="1" />
+          <End Role="FormADocument" Type="Self.FormADocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormADocument">
+              <PropertyRef Name="FormAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocument_FormADocumentType">
+          <End Role="FormADocumentType" Type="Self.FormADocumentType" Multiplicity="1" />
+          <End Role="FormADocument" Type="Self.FormADocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormADocumentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormADocument">
+              <PropertyRef Name="FormADocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocumentType_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="FormADocumentType" Type="Self.FormADocumentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="FormADocumentType">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAIssue_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="FormAIssue" Type="Self.FormAIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAIssue">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAissue_Distributor_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <End Role="FormAIssue" Type="Self.FormAIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAIssue">
+              <PropertyRef Name="DistributorUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAIssue_Exporter">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="1" />
+          <End Role="FormAIssue" Type="Self.FormAIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAIssue">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormALog_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormALog" Type="Self.FormALog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormALog">
+              <PropertyRef Name="ActionBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAState_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="FormAState" Type="Self.FormAState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="FormAState">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAStateLog_FormA">
+          <End Role="FormA" Type="Self.FormA" Multiplicity="1" />
+          <End Role="FormALog" Type="Self.FormALog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormALog">
+              <PropertyRef Name="FromAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAStateLog_FormAState">
+          <End Role="FormAState" Type="Self.FormAState" Multiplicity="1" />
+          <End Role="FormALog" Type="Self.FormALog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormAState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormALog">
+              <PropertyRef Name="FormAStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCode_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="ProductCode" Type="Self.ProductCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductCode">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceDetail_CultureInfo">
+          <End Role="Culture" Type="Self.Culture" Multiplicity="1" />
+          <End Role="ResourceDetail" Type="Self.ResourceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="Culture" />
+            </Principal>
+            <Dependent Role="ResourceDetail">
+              <PropertyRef Name="Culture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceDetail_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="ResourceDetail" Type="Self.ResourceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="ResourceDetail">
+              <PropertyRef Name="ResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thana_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Thana" Type="Self.Thana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Thana">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_ActiveState">
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActiveState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="ActiveStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_ChangedBy">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="UserProfile1" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile1">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Culture">
+          <End Role="Culture" Type="Self.Culture" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="Culture" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="CultureCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Person_Primary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="PrimaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Person_Secondary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="SecondaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="UserProfile1" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GspDBModelStoreContainer">
+          <EntitySet Name="ActiveState" EntityType="Self.ActiveState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Culture" EntityType="Self.Culture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distributor" EntityType="Self.Distributor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistributorUserProfile" EntityType="Self.DistributorUserProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exporter" EntityType="Self.Exporter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FactoryType" EntityType="Self.FactoryType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormA" EntityType="Self.FormA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormAAssign" EntityType="Self.FormAAssign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormACategory" EntityType="Self.FormACategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormADocument" EntityType="Self.FormADocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormADocumentType" EntityType="Self.FormADocumentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormAIssue" EntityType="Self.FormAIssue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormALog" EntityType="Self.FormALog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormAState" EntityType="Self.FormAState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCode" EntityType="Self.ProductCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Resource" EntityType="Self.Resource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResourceDetail" EntityType="Self.ResourceDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thana" EntityType="Self.Thana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActiveState_Resource" Association="Self.FK_ActiveState_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="ActiveState" EntitySet="ActiveState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_Resource" Association="Self.FK_Country_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_ActiveState" Association="Self.FK_Distributor_ActiveState">
+            <End Role="ActiveState" EntitySet="ActiveState" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Country" Association="Self.FK_Distributor_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_District" Association="Self.FK_Distributor_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Person_Primary" Association="Self.FK_Distributor_Person_Primary">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Person_Secondary" Association="Self.FK_Distributor_Person_Secondary">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Thana" Association="Self.FK_Distributor_Thana">
+            <End Role="Thana" EntitySet="Thana" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_UserProfile" Association="Self.FK_Distributor_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_UserProfile1" Association="Self.FK_Distributor_UserProfile1">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Distributor" EntitySet="Distributor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributorUserProfile_Distributor" Association="Self.FK_DistributorUserProfile_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="DistributorUserProfile" EntitySet="DistributorUserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributorUserProfile_UserProfile" Association="Self.FK_DistributorUserProfile_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="DistributorUserProfile" EntitySet="DistributorUserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_ActiveState" Association="Self.FK_Exporter_ActiveState">
+            <End Role="ActiveState" EntitySet="ActiveState" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Country4" Association="Self.FK_Exporter_Country4">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Country5" Association="Self.FK_Exporter_Country5">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_District" Association="Self.FK_Exporter_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_District1" Association="Self.FK_Exporter_District1">
+            <End Role="District" EntitySet="District" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_FactoryType" Association="Self.FK_Exporter_FactoryType">
+            <End Role="FactoryType" EntitySet="FactoryType" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Person_Primary" Association="Self.FK_Exporter_Person_Primary">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Person_Secondary" Association="Self.FK_Exporter_Person_Secondary">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Thana" Association="Self.FK_Exporter_Thana">
+            <End Role="Thana" EntitySet="Thana" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Thana1" Association="Self.FK_Exporter_Thana1">
+            <End Role="Thana" EntitySet="Thana" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_UserProfile" Association="Self.FK_Exporter_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_UserProfile1" Association="Self.FK_Exporter_UserProfile1">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="Exporter" EntitySet="Exporter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactoryType_Resource" Association="Self.FK_FactoryType_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="FactoryType" EntitySet="FactoryType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_Distributor" Association="Self.FK_FormA_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="FormA" EntitySet="FormA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_District" Association="Self.FK_FormA_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="FormA" EntitySet="FormA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_Exporter" Association="Self.FK_FormA_Exporter">
+            <End Role="Exporter" EntitySet="Exporter" />
+            <End Role="FormA" EntitySet="FormA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_FormAState" Association="Self.FK_FormA_FormAState">
+            <End Role="FormAState" EntitySet="FormAState" />
+            <End Role="FormA" EntitySet="FormA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_UserProfile" Association="Self.FK_FormA_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FormA" EntitySet="FormA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_UserProfile1" Association="Self.FK_FormA_UserProfile1">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FormA" EntitySet="FormA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAAssign_Distributor" Association="Self.FK_FormAAssign_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="FormAAssign" EntitySet="FormAAssign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAAssign_UserProfile" Association="Self.FK_FormAAssign_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FormAAssign" EntitySet="FormAAssign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormACategory_Category" Association="Self.FK_FormACategory_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="FormACategory" EntitySet="FormACategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormACategory_FormA" Association="Self.FK_FormACategory_FormA">
+            <End Role="FormA" EntitySet="FormA" />
+            <End Role="FormACategory" EntitySet="FormACategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormACategory_ProductCode" Association="Self.FK_FormACategory_ProductCode">
+            <End Role="ProductCode" EntitySet="ProductCode" />
+            <End Role="FormACategory" EntitySet="FormACategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocument_Document" Association="Self.FK_FormADocument_Document">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="FormADocument" EntitySet="FormADocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocument_FormA" Association="Self.FK_FormADocument_FormA">
+            <End Role="FormA" EntitySet="FormA" />
+            <End Role="FormADocument" EntitySet="FormADocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocument_FormADocumentType" Association="Self.FK_FormADocument_FormADocumentType">
+            <End Role="FormADocumentType" EntitySet="FormADocumentType" />
+            <End Role="FormADocument" EntitySet="FormADocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocumentType_Resource" Association="Self.FK_FormADocumentType_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="FormADocumentType" EntitySet="FormADocumentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAIssue_Distributor" Association="Self.FK_FormAIssue_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="FormAIssue" EntitySet="FormAIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAissue_Distributor_UserProfile" Association="Self.FK_FormAissue_Distributor_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FormAIssue" EntitySet="FormAIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAIssue_Exporter" Association="Self.FK_FormAIssue_Exporter">
+            <End Role="Exporter" EntitySet="Exporter" />
+            <End Role="FormAIssue" EntitySet="FormAIssue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormALog_UserProfile" Association="Self.FK_FormALog_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="FormALog" EntitySet="FormALog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAState_Resource" Association="Self.FK_FormAState_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="FormAState" EntitySet="FormAState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAStateLog_FormA" Association="Self.FK_FormAStateLog_FormA">
+            <End Role="FormA" EntitySet="FormA" />
+            <End Role="FormALog" EntitySet="FormALog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAStateLog_FormAState" Association="Self.FK_FormAStateLog_FormAState">
+            <End Role="FormAState" EntitySet="FormAState" />
+            <End Role="FormALog" EntitySet="FormALog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCode_Category" Association="Self.FK_ProductCode_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="ProductCode" EntitySet="ProductCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceDetail_CultureInfo" Association="Self.FK_ResourceDetail_CultureInfo">
+            <End Role="Culture" EntitySet="Culture" />
+            <End Role="ResourceDetail" EntitySet="ResourceDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceDetail_Resource" Association="Self.FK_ResourceDetail_Resource">
+            <End Role="Resource" EntitySet="Resource" />
+            <End Role="ResourceDetail" EntitySet="ResourceDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thana_District" Association="Self.FK_Thana_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Thana" EntitySet="Thana" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_ActiveState" Association="Self.FK_UserProfile_ActiveState">
+            <End Role="ActiveState" EntitySet="ActiveState" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_ChangedBy" Association="Self.FK_UserProfile_ChangedBy">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserProfile1" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Culture" Association="Self.FK_UserProfile_Culture">
+            <End Role="Culture" EntitySet="Culture" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Document" Association="Self.FK_UserProfile_Document">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Person_Primary" Association="Self.FK_UserProfile_Person_Primary">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Person_Secondary" Association="Self.FK_UserProfile_Person_Secondary">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_UserProfile" Association="Self.FK_UserProfile_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserProfile1" EntitySet="UserProfile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GspDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActiveState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="StatusResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_ActiveState_Resource" FromRole="ActiveState" ToRole="Resource" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_ActiveState" FromRole="ActiveState" ToRole="Distributor" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_ActiveState" FromRole="ActiveState" ToRole="Exporter" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_ActiveState" FromRole="ActiveState" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FormACategories" Relationship="Self.FK_FormACategory_Category" FromRole="Category" ToRole="FormACategory" />
+          <NavigationProperty Name="ProductCodes" Relationship="Self.FK_ProductCode_Category" FromRole="Category" ToRole="ProductCode" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_Country_Resource" FromRole="Country" ToRole="Resource" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_Country" FromRole="Country" ToRole="Distributor" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_Country4" FromRole="Country" ToRole="Exporter" />
+          <NavigationProperty Name="Exporters1" Relationship="Self.FK_Exporter_Country5" FromRole="Country" ToRole="Exporter" />
+        </EntityType>
+        <EntityType Name="Culture">
+          <Key>
+            <PropertyRef Name="Culture1" />
+          </Key>
+          <Property Name="Culture1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ResourceDetails" Relationship="Self.FK_ResourceDetail_CultureInfo" FromRole="Culture" ToRole="ResourceDetail" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_Culture" FromRole="Culture" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DistributorNo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Organization" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveStateId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="PsId" Type="Int32" />
+          <Property Name="PrimaryPersonId" Type="Guid" />
+          <Property Name="SecondaryPersonId" Type="Guid" />
+          <Property Name="IdentityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="Changed" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="Guid" />
+          <NavigationProperty Name="ActiveState" Relationship="Self.FK_Distributor_ActiveState" FromRole="Distributor" ToRole="ActiveState" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Distributor_Country" FromRole="Distributor" ToRole="Country" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Distributor_District" FromRole="Distributor" ToRole="District" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Distributor_Person_Primary" FromRole="Distributor" ToRole="Person" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK_Distributor_Person_Secondary" FromRole="Distributor" ToRole="Person" />
+          <NavigationProperty Name="Thana" Relationship="Self.FK_Distributor_Thana" FromRole="Distributor" ToRole="Thana" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_Distributor_UserProfile" FromRole="Distributor" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfile1" Relationship="Self.FK_Distributor_UserProfile1" FromRole="Distributor" ToRole="UserProfile" />
+          <NavigationProperty Name="DistributorUserProfiles" Relationship="Self.FK_DistributorUserProfile_Distributor" FromRole="Distributor" ToRole="DistributorUserProfile" />
+          <NavigationProperty Name="FormAs" Relationship="Self.FK_FormA_Distributor" FromRole="Distributor" ToRole="FormA" />
+          <NavigationProperty Name="FormAAssigns" Relationship="Self.FK_FormAAssign_Distributor" FromRole="Distributor" ToRole="FormAAssign" />
+          <NavigationProperty Name="FormAIssues" Relationship="Self.FK_FormAIssue_Distributor" FromRole="Distributor" ToRole="FormAIssue" />
+        </EntityType>
+        <EntityType Name="DistributorUserProfile">
+          <Key>
+            <PropertyRef Name="DistributorId" />
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="DistributorId" Type="Guid" Nullable="false" />
+          <Property Name="UserProfileId" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="Changed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_DistributorUserProfile_Distributor" FromRole="DistributorUserProfile" ToRole="Distributor" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_DistributorUserProfile_UserProfile" FromRole="DistributorUserProfile" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_District" FromRole="District" ToRole="Distributor" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_District" FromRole="District" ToRole="Exporter" />
+          <NavigationProperty Name="Exporters1" Relationship="Self.FK_Exporter_District1" FromRole="District" ToRole="Exporter" />
+          <NavigationProperty Name="FormAs" Relationship="Self.FK_FormA_District" FromRole="District" ToRole="FormA" />
+          <NavigationProperty Name="Thanas" Relationship="Self.FK_Thana_District" FromRole="District" ToRole="Thana" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DocumentContent" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="MimeType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AwsKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDocumentCleaned" Type="Boolean" />
+          <NavigationProperty Name="FormADocuments" Relationship="Self.FK_FormADocument_Document" FromRole="Document" ToRole="FormADocument" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_Document" FromRole="Document" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="Exporter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ExporterNo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CompanyOrFactoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FactoryTypeId" Type="Int32" />
+          <Property Name="CorporateAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CorporateAddressPsId" Type="Int32" />
+          <Property Name="CorporateAddressDistrictId" Type="Int32" />
+          <Property Name="CorporateAddressCountryId" Type="Int32" />
+          <Property Name="FactoryAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryAddressPsId" Type="Int32" />
+          <Property Name="FactoryAddressDistrictId" Type="Int32" />
+          <Property Name="FactoryAddressCountryId" Type="Int32" />
+          <Property Name="PrimaryPersonId" Type="Guid" />
+          <Property Name="SecondaryPersonId" Type="Guid" />
+          <Property Name="AssociationMembershipNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationBinNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationTradeLicense" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationTinNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodofValidation" Type="DateTime" Precision="3" />
+          <Property Name="ActivityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IndustrialProcessDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GoodsDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="HsCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveStateId" Type="Int32" Nullable="false" />
+          <Property Name="EpbRegistrationNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationValidSince" Type="DateTime" Precision="3" />
+          <Property Name="IdentityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsUndertakingByExporter" Type="Boolean" Nullable="false" />
+          <Property Name="RegDate" Type="DateTime" Precision="3" />
+          <Property Name="Bonded" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ErcNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BolRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FireLicNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BondLicNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="Changed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedBy" Type="Guid" Nullable="false" />
+          <Property Name="ExporterType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActiveState" Relationship="Self.FK_Exporter_ActiveState" FromRole="Exporter" ToRole="ActiveState" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Exporter_Country4" FromRole="Exporter" ToRole="Country" />
+          <NavigationProperty Name="Country1" Relationship="Self.FK_Exporter_Country5" FromRole="Exporter" ToRole="Country" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Exporter_District" FromRole="Exporter" ToRole="District" />
+          <NavigationProperty Name="District1" Relationship="Self.FK_Exporter_District1" FromRole="Exporter" ToRole="District" />
+          <NavigationProperty Name="FactoryType" Relationship="Self.FK_Exporter_FactoryType" FromRole="Exporter" ToRole="FactoryType" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Exporter_Person_Primary" FromRole="Exporter" ToRole="Person" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK_Exporter_Person_Secondary" FromRole="Exporter" ToRole="Person" />
+          <NavigationProperty Name="Thana" Relationship="Self.FK_Exporter_Thana" FromRole="Exporter" ToRole="Thana" />
+          <NavigationProperty Name="Thana1" Relationship="Self.FK_Exporter_Thana1" FromRole="Exporter" ToRole="Thana" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_Exporter_UserProfile" FromRole="Exporter" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfile1" Relationship="Self.FK_Exporter_UserProfile1" FromRole="Exporter" ToRole="UserProfile" />
+          <NavigationProperty Name="FormAs" Relationship="Self.FK_FormA_Exporter" FromRole="Exporter" ToRole="FormA" />
+          <NavigationProperty Name="FormAIssues" Relationship="Self.FK_FormAIssue_Exporter" FromRole="Exporter" ToRole="FormAIssue" />
+        </EntityType>
+        <EntityType Name="FactoryType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_FactoryType" FromRole="FactoryType" ToRole="Exporter" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_FactoryType_Resource" FromRole="FactoryType" ToRole="Resource" />
+        </EntityType>
+        <EntityType Name="FormA">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FormANo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExporterId" Type="Guid" />
+          <Property Name="DistributorId" Type="Guid" />
+          <Property Name="FormANoInt" Type="Int32" Nullable="false" />
+          <Property Name="FormAStateId" Type="Int32" Nullable="false" />
+          <Property Name="ImporterName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImporterAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FreightBlNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FreightVessel" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FreightContainerNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FreightRoute" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationRegNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExpNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EpbReferenceNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IssueDate" Type="DateTime" Precision="3" />
+          <Property Name="NotesReceiving" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NotesVerification" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NotesDelivery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="BillOfLadingDate" Type="DateTime" Precision="3" />
+          <Property Name="ItemNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarksAndNoOfPackages" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoAndKindOfPackages" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExpDate" Type="DateTime" Precision="3" />
+          <Property Name="LcNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LcDate" Type="DateTime" Precision="3" />
+          <Property Name="BbLcNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BbLcDate" Type="DateTime" Precision="3" />
+          <Property Name="BillOfExportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillOfExportDate" Type="DateTime" Precision="3" />
+          <Property Name="Origin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ProductCodeId" Type="Int32" />
+          <Property Name="Quantities" Type="Int32" />
+          <Property Name="GrossWeight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="InvoiceValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollectorName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CollectorTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CollectorPhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EpbOfficerName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EpbOfficerTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EpbOfficeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorizePersonName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorizePersonTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentConfirmationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="ServiceTime" Type="Int32" />
+          <Property Name="DeclarationByExporterDate" Type="DateTime" Precision="3" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="Changed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedBy" Type="Guid" Nullable="false" />
+          <Property Name="NotesSubmissionByExporter" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_FormA_Distributor" FromRole="FormA" ToRole="Distributor" />
+          <NavigationProperty Name="District" Relationship="Self.FK_FormA_District" FromRole="FormA" ToRole="District" />
+          <NavigationProperty Name="Exporter" Relationship="Self.FK_FormA_Exporter" FromRole="FormA" ToRole="Exporter" />
+          <NavigationProperty Name="FormAState" Relationship="Self.FK_FormA_FormAState" FromRole="FormA" ToRole="FormAState" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_FormA_UserProfile" FromRole="FormA" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfile1" Relationship="Self.FK_FormA_UserProfile1" FromRole="FormA" ToRole="UserProfile" />
+          <NavigationProperty Name="FormACategories" Relationship="Self.FK_FormACategory_FormA" FromRole="FormA" ToRole="FormACategory" />
+          <NavigationProperty Name="FormADocuments" Relationship="Self.FK_FormADocument_FormA" FromRole="FormA" ToRole="FormADocument" />
+          <NavigationProperty Name="FormALogs" Relationship="Self.FK_FormAStateLog_FormA" FromRole="FormA" ToRole="FormALog" />
+        </EntityType>
+        <EntityType Name="FormAAssign">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DistributorId" Type="Guid" Nullable="false" />
+          <Property Name="FormAFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FormATo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_FormAAssign_Distributor" FromRole="FormAAssign" ToRole="Distributor" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_FormAAssign_UserProfile" FromRole="FormAAssign" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="FormACategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FormAId" Type="Guid" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ProductCodeId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_FormACategory_Category" FromRole="FormACategory" ToRole="Category" />
+          <NavigationProperty Name="FormA" Relationship="Self.FK_FormACategory_FormA" FromRole="FormACategory" ToRole="FormA" />
+          <NavigationProperty Name="ProductCode" Relationship="Self.FK_FormACategory_ProductCode" FromRole="FormACategory" ToRole="ProductCode" />
+        </EntityType>
+        <EntityType Name="FormADocument">
+          <Key>
+            <PropertyRef Name="FormAId" />
+            <PropertyRef Name="DocumentId" />
+          </Key>
+          <Property Name="FormAId" Type="Guid" Nullable="false" />
+          <Property Name="DocumentId" Type="Guid" Nullable="false" />
+          <Property Name="FormADocumentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="Changed" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="Guid" />
+          <NavigationProperty Name="Document" Relationship="Self.FK_FormADocument_Document" FromRole="FormADocument" ToRole="Document" />
+          <NavigationProperty Name="FormA" Relationship="Self.FK_FormADocument_FormA" FromRole="FormADocument" ToRole="FormA" />
+          <NavigationProperty Name="FormADocumentType" Relationship="Self.FK_FormADocument_FormADocumentType" FromRole="FormADocument" ToRole="FormADocumentType" />
+        </EntityType>
+        <EntityType Name="FormADocumentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FormADocuments" Relationship="Self.FK_FormADocument_FormADocumentType" FromRole="FormADocumentType" ToRole="FormADocument" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_FormADocumentType_Resource" FromRole="FormADocumentType" ToRole="Resource" />
+        </EntityType>
+        <EntityType Name="FormAIssue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExporterNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExporterName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FormRange" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Int32" Nullable="false" />
+          <Property Name="ExporterId" Type="Guid" Nullable="false" />
+          <Property Name="DistributorId" Type="Guid" Nullable="false" />
+          <Property Name="DistributorUserId" Type="Guid" />
+          <NavigationProperty Name="Distributor" Relationship="Self.FK_FormAIssue_Distributor" FromRole="FormAIssue" ToRole="Distributor" />
+          <NavigationProperty Name="Exporter" Relationship="Self.FK_FormAIssue_Exporter" FromRole="FormAIssue" ToRole="Exporter" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_FormAissue_Distributor_UserProfile" FromRole="FormAIssue" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="FormALog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FromAId" Type="Guid" Nullable="false" />
+          <Property Name="FormAStateId" Type="Int32" Nullable="false" />
+          <Property Name="Descripton" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="ActionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActionBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="FormA" Relationship="Self.FK_FormAStateLog_FormA" FromRole="FormALog" ToRole="FormA" />
+          <NavigationProperty Name="UserProfile" Relationship="Self.FK_FormALog_UserProfile" FromRole="FormALog" ToRole="UserProfile" />
+          <NavigationProperty Name="FormAState" Relationship="Self.FK_FormAStateLog_FormAState" FromRole="FormALog" ToRole="FormAState" />
+        </EntityType>
+        <EntityType Name="FormAState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NameResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PermissionDataId" Type="Guid" Nullable="false" />
+          <Property Name="EditPermissionDataId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="FormAs" Relationship="Self.FK_FormA_FormAState" FromRole="FormAState" ToRole="FormA" />
+          <NavigationProperty Name="FormALogs" Relationship="Self.FK_FormAStateLog_FormAState" FromRole="FormAState" ToRole="FormALog" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_FormAState_Resource" FromRole="FormAState" ToRole="Resource" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OfficePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_Person_Primary" FromRole="Person" ToRole="Distributor" />
+          <NavigationProperty Name="Distributors1" Relationship="Self.FK_Distributor_Person_Secondary" FromRole="Person" ToRole="Distributor" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_Person_Primary" FromRole="Person" ToRole="Exporter" />
+          <NavigationProperty Name="Exporters1" Relationship="Self.FK_Exporter_Person_Secondary" FromRole="Person" ToRole="Exporter" />
+          <NavigationProperty Name="UserProfiles" Relationship="Self.FK_UserProfile_Person_Primary" FromRole="Person" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfiles1" Relationship="Self.FK_UserProfile_Person_Secondary" FromRole="Person" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="ProductCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_ProductCode_Category" FromRole="ProductCode" ToRole="Category" />
+          <NavigationProperty Name="FormACategories" Relationship="Self.FK_FormACategory_ProductCode" FromRole="ProductCode" ToRole="FormACategory" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceKey" />
+          </Key>
+          <Property Name="ResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActiveStates" Relationship="Self.FK_ActiveState_Resource" FromRole="Resource" ToRole="ActiveState" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Country_Resource" FromRole="Resource" ToRole="Country" />
+          <NavigationProperty Name="FactoryTypes" Relationship="Self.FK_FactoryType_Resource" FromRole="Resource" ToRole="FactoryType" />
+          <NavigationProperty Name="FormADocumentTypes" Relationship="Self.FK_FormADocumentType_Resource" FromRole="Resource" ToRole="FormADocumentType" />
+          <NavigationProperty Name="FormAStates" Relationship="Self.FK_FormAState_Resource" FromRole="Resource" ToRole="FormAState" />
+          <NavigationProperty Name="ResourceDetails" Relationship="Self.FK_ResourceDetail_Resource" FromRole="Resource" ToRole="ResourceDetail" />
+        </EntityType>
+        <EntityType Name="ResourceDetail">
+          <Key>
+            <PropertyRef Name="ResourceKey" />
+            <PropertyRef Name="Culture" />
+          </Key>
+          <Property Name="ResourceKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Culture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResourceValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Culture1" Relationship="Self.FK_ResourceDetail_CultureInfo" FromRole="ResourceDetail" ToRole="Culture" />
+          <NavigationProperty Name="Resource" Relationship="Self.FK_ResourceDetail_Resource" FromRole="ResourceDetail" ToRole="Resource" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Thana">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_Thana" FromRole="Thana" ToRole="Distributor" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Thana_District" FromRole="Thana" ToRole="District" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_Thana" FromRole="Thana" ToRole="Exporter" />
+          <NavigationProperty Name="Exporters1" Relationship="Self.FK_Exporter_Thana1" FromRole="Thana" ToRole="Exporter" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryPersonId" Type="Guid" />
+          <Property Name="SecondaryPersonId" Type="Guid" />
+          <Property Name="Organization" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CultureCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActiveStateId" Type="Int32" Nullable="false" />
+          <Property Name="DocumentId" Type="Guid" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="Changed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChangedBy" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="ActiveState" Relationship="Self.FK_UserProfile_ActiveState" FromRole="UserProfile" ToRole="ActiveState" />
+          <NavigationProperty Name="Culture" Relationship="Self.FK_UserProfile_Culture" FromRole="UserProfile" ToRole="Culture" />
+          <NavigationProperty Name="Distributors" Relationship="Self.FK_Distributor_UserProfile" FromRole="UserProfile" ToRole="Distributor" />
+          <NavigationProperty Name="Distributors1" Relationship="Self.FK_Distributor_UserProfile1" FromRole="UserProfile" ToRole="Distributor" />
+          <NavigationProperty Name="DistributorUserProfiles" Relationship="Self.FK_DistributorUserProfile_UserProfile" FromRole="UserProfile" ToRole="DistributorUserProfile" />
+          <NavigationProperty Name="Document" Relationship="Self.FK_UserProfile_Document" FromRole="UserProfile" ToRole="Document" />
+          <NavigationProperty Name="Exporters" Relationship="Self.FK_Exporter_UserProfile" FromRole="UserProfile" ToRole="Exporter" />
+          <NavigationProperty Name="Exporters1" Relationship="Self.FK_Exporter_UserProfile1" FromRole="UserProfile" ToRole="Exporter" />
+          <NavigationProperty Name="FormAs" Relationship="Self.FK_FormA_UserProfile" FromRole="UserProfile" ToRole="FormA" />
+          <NavigationProperty Name="FormAs1" Relationship="Self.FK_FormA_UserProfile1" FromRole="UserProfile" ToRole="FormA" />
+          <NavigationProperty Name="FormAAssigns" Relationship="Self.FK_FormAAssign_UserProfile" FromRole="UserProfile" ToRole="FormAAssign" />
+          <NavigationProperty Name="FormAIssues" Relationship="Self.FK_FormAissue_Distributor_UserProfile" FromRole="UserProfile" ToRole="FormAIssue" />
+          <NavigationProperty Name="FormALogs" Relationship="Self.FK_FormALog_UserProfile" FromRole="UserProfile" ToRole="FormALog" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_UserProfile_Person_Primary" FromRole="UserProfile" ToRole="Person" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK_UserProfile_Person_Secondary" FromRole="UserProfile" ToRole="Person" />
+          <NavigationProperty Name="UserProfile1" Relationship="Self.FK_UserProfile_ChangedBy" FromRole="UserProfile" ToRole="UserProfile1" />
+          <NavigationProperty Name="UserProfile2" Relationship="Self.FK_UserProfile_ChangedBy" FromRole="UserProfile1" ToRole="UserProfile" />
+          <NavigationProperty Name="UserProfile11" Relationship="Self.FK_UserProfile_UserProfile" FromRole="UserProfile" ToRole="UserProfile1" />
+          <NavigationProperty Name="UserProfile3" Relationship="Self.FK_UserProfile_UserProfile" FromRole="UserProfile1" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_ActiveState_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="ActiveState">
+              <PropertyRef Name="StatusResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_ActiveState">
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActiveState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="ActiveStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_ActiveState">
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActiveState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="ActiveStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_ActiveState">
+          <End Role="ActiveState" Type="Self.ActiveState" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActiveState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="ActiveStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormACategory_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="FormACategory" Type="Self.FormACategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormACategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductCode_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="ProductCode" Type="Self.ProductCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductCode">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Country4">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CorporateAddressCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Country5">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryAddressCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceDetail_CultureInfo">
+          <End Role="Culture" Type="Self.Culture" Multiplicity="1" />
+          <End Role="ResourceDetail" Type="Self.ResourceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="Culture1" />
+            </Principal>
+            <Dependent Role="ResourceDetail">
+              <PropertyRef Name="Culture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Culture">
+          <End Role="Culture" Type="Self.Culture" Multiplicity="1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="Culture1" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="CultureCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Person_Primary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="PrimaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Person_Secondary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="SecondaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_Thana">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="PsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributor_UserProfile1">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributorUserProfile_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="DistributorUserProfile" Type="Self.DistributorUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistributorUserProfile">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="0..1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAAssign_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="FormAAssign" Type="Self.FormAAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAAssign">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAIssue_Distributor">
+          <End Role="Distributor" Type="Self.Distributor" Multiplicity="1" />
+          <End Role="FormAIssue" Type="Self.FormAIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAIssue">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributorUserProfile_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="DistributorUserProfile" Type="Self.DistributorUserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistributorUserProfile">
+              <PropertyRef Name="UserProfileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CorporateAddressDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_District1">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryAddressDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thana_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Thana" Type="Self.Thana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Thana">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocument_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="FormADocument" Type="Self.FormADocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormADocument">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="DocumentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_FactoryType">
+          <End Role="FactoryType" Type="Self.FactoryType" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FactoryType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Person_Primary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="PrimaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Person_Secondary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="SecondaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Thana">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CorporateAddressPsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_Thana1">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="0..1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="FactoryAddressPsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Exporter_UserProfile1">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exporter">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_Exporter">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="0..1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAIssue_Exporter">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="1" />
+          <End Role="FormAIssue" Type="Self.FormAIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAIssue">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FactoryType_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="FactoryType" Type="Self.FactoryType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="FactoryType">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_FormAState">
+          <End Role="FormAState" Type="Self.FormAState" Multiplicity="1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormAState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="FormAStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormA_UserProfile1">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormA" Type="Self.FormA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormA">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormACategory_FormA">
+          <End Role="FormA" Type="Self.FormA" Multiplicity="0..1" />
+          <End Role="FormACategory" Type="Self.FormACategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormACategory">
+              <PropertyRef Name="FormAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocument_FormA">
+          <End Role="FormA" Type="Self.FormA" Multiplicity="1" />
+          <End Role="FormADocument" Type="Self.FormADocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormADocument">
+              <PropertyRef Name="FormAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAStateLog_FormA">
+          <End Role="FormA" Type="Self.FormA" Multiplicity="1" />
+          <End Role="FormALog" Type="Self.FormALog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormA">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormALog">
+              <PropertyRef Name="FromAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAAssign_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormAAssign" Type="Self.FormAAssign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAAssign">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormACategory_ProductCode">
+          <End Role="ProductCode" Type="Self.ProductCode" Multiplicity="0..1" />
+          <End Role="FormACategory" Type="Self.FormACategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormACategory">
+              <PropertyRef Name="ProductCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocument_FormADocumentType">
+          <End Role="FormADocumentType" Type="Self.FormADocumentType" Multiplicity="1" />
+          <End Role="FormADocument" Type="Self.FormADocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormADocumentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormADocument">
+              <PropertyRef Name="FormADocumentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormADocumentType_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="FormADocumentType" Type="Self.FormADocumentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="FormADocumentType">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAissue_Distributor_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="0..1" />
+          <End Role="FormAIssue" Type="Self.FormAIssue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormAIssue">
+              <PropertyRef Name="DistributorUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormALog_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="FormALog" Type="Self.FormALog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormALog">
+              <PropertyRef Name="ActionBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAStateLog_FormAState">
+          <End Role="FormAState" Type="Self.FormAState" Multiplicity="1" />
+          <End Role="FormALog" Type="Self.FormALog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormAState">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormALog">
+              <PropertyRef Name="FormAStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormAState_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="FormAState" Type="Self.FormAState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="FormAState">
+              <PropertyRef Name="NameResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Person_Primary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="PrimaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_Person_Secondary">
+          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="SecondaryPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResourceDetail_Resource">
+          <End Role="Resource" Type="Self.Resource" Multiplicity="1" />
+          <End Role="ResourceDetail" Type="Self.ResourceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resource">
+              <PropertyRef Name="ResourceKey" />
+            </Principal>
+            <Dependent Role="ResourceDetail">
+              <PropertyRef Name="ResourceKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_ChangedBy">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="UserProfile1" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile1">
+              <PropertyRef Name="ChangedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_UserProfile">
+          <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+          <End Role="UserProfile1" Type="Self.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserProfile1">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GspDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActiveStates" EntityType="Self.ActiveState" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Cultures" EntityType="Self.Culture" />
+          <EntitySet Name="Distributors" EntityType="Self.Distributor" />
+          <EntitySet Name="DistributorUserProfiles" EntityType="Self.DistributorUserProfile" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Exporters" EntityType="Self.Exporter" />
+          <EntitySet Name="FactoryTypes" EntityType="Self.FactoryType" />
+          <EntitySet Name="FormAs" EntityType="Self.FormA" />
+          <EntitySet Name="FormAAssigns" EntityType="Self.FormAAssign" />
+          <EntitySet Name="FormACategories" EntityType="Self.FormACategory" />
+          <EntitySet Name="FormADocuments" EntityType="Self.FormADocument" />
+          <EntitySet Name="FormADocumentTypes" EntityType="Self.FormADocumentType" />
+          <EntitySet Name="FormAIssues" EntityType="Self.FormAIssue" />
+          <EntitySet Name="FormALogs" EntityType="Self.FormALog" />
+          <EntitySet Name="FormAStates" EntityType="Self.FormAState" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="ProductCodes" EntityType="Self.ProductCode" />
+          <EntitySet Name="Resources" EntityType="Self.Resource" />
+          <EntitySet Name="ResourceDetails" EntityType="Self.ResourceDetail" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Thanas" EntityType="Self.Thana" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfile" />
+          <AssociationSet Name="FK_ActiveState_Resource" Association="Self.FK_ActiveState_Resource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="ActiveState" EntitySet="ActiveStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_ActiveState" Association="Self.FK_Distributor_ActiveState">
+            <End Role="ActiveState" EntitySet="ActiveStates" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_ActiveState" Association="Self.FK_Exporter_ActiveState">
+            <End Role="ActiveState" EntitySet="ActiveStates" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_ActiveState" Association="Self.FK_UserProfile_ActiveState">
+            <End Role="ActiveState" EntitySet="ActiveStates" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormACategory_Category" Association="Self.FK_FormACategory_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="FormACategory" EntitySet="FormACategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductCode_Category" Association="Self.FK_ProductCode_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="ProductCode" EntitySet="ProductCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_Resource" Association="Self.FK_Country_Resource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="Country" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Country" Association="Self.FK_Distributor_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Country4" Association="Self.FK_Exporter_Country4">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Country5" Association="Self.FK_Exporter_Country5">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceDetail_CultureInfo" Association="Self.FK_ResourceDetail_CultureInfo">
+            <End Role="Culture" EntitySet="Cultures" />
+            <End Role="ResourceDetail" EntitySet="ResourceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Culture" Association="Self.FK_UserProfile_Culture">
+            <End Role="Culture" EntitySet="Cultures" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_District" Association="Self.FK_Distributor_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Person_Primary" Association="Self.FK_Distributor_Person_Primary">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Person_Secondary" Association="Self.FK_Distributor_Person_Secondary">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_Thana" Association="Self.FK_Distributor_Thana">
+            <End Role="Thana" EntitySet="Thanas" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_UserProfile" Association="Self.FK_Distributor_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributor_UserProfile1" Association="Self.FK_Distributor_UserProfile1">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Distributor" EntitySet="Distributors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributorUserProfile_Distributor" Association="Self.FK_DistributorUserProfile_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="DistributorUserProfile" EntitySet="DistributorUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_Distributor" Association="Self.FK_FormA_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="FormA" EntitySet="FormAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAAssign_Distributor" Association="Self.FK_FormAAssign_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="FormAAssign" EntitySet="FormAAssigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAIssue_Distributor" Association="Self.FK_FormAIssue_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="FormAIssue" EntitySet="FormAIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributorUserProfile_UserProfile" Association="Self.FK_DistributorUserProfile_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="DistributorUserProfile" EntitySet="DistributorUserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_District" Association="Self.FK_Exporter_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_District1" Association="Self.FK_Exporter_District1">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_District" Association="Self.FK_FormA_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="FormA" EntitySet="FormAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thana_District" Association="Self.FK_Thana_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Thana" EntitySet="Thanas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocument_Document" Association="Self.FK_FormADocument_Document">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="FormADocument" EntitySet="FormADocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Document" Association="Self.FK_UserProfile_Document">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_FactoryType" Association="Self.FK_Exporter_FactoryType">
+            <End Role="FactoryType" EntitySet="FactoryTypes" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Person_Primary" Association="Self.FK_Exporter_Person_Primary">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Person_Secondary" Association="Self.FK_Exporter_Person_Secondary">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Thana" Association="Self.FK_Exporter_Thana">
+            <End Role="Thana" EntitySet="Thanas" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_Thana1" Association="Self.FK_Exporter_Thana1">
+            <End Role="Thana" EntitySet="Thanas" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_UserProfile" Association="Self.FK_Exporter_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Exporter_UserProfile1" Association="Self.FK_Exporter_UserProfile1">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="Exporter" EntitySet="Exporters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_Exporter" Association="Self.FK_FormA_Exporter">
+            <End Role="Exporter" EntitySet="Exporters" />
+            <End Role="FormA" EntitySet="FormAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAIssue_Exporter" Association="Self.FK_FormAIssue_Exporter">
+            <End Role="Exporter" EntitySet="Exporters" />
+            <End Role="FormAIssue" EntitySet="FormAIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FactoryType_Resource" Association="Self.FK_FactoryType_Resource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="FactoryType" EntitySet="FactoryTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_FormAState" Association="Self.FK_FormA_FormAState">
+            <End Role="FormAState" EntitySet="FormAStates" />
+            <End Role="FormA" EntitySet="FormAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_UserProfile" Association="Self.FK_FormA_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FormA" EntitySet="FormAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormA_UserProfile1" Association="Self.FK_FormA_UserProfile1">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FormA" EntitySet="FormAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormACategory_FormA" Association="Self.FK_FormACategory_FormA">
+            <End Role="FormA" EntitySet="FormAs" />
+            <End Role="FormACategory" EntitySet="FormACategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocument_FormA" Association="Self.FK_FormADocument_FormA">
+            <End Role="FormA" EntitySet="FormAs" />
+            <End Role="FormADocument" EntitySet="FormADocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAStateLog_FormA" Association="Self.FK_FormAStateLog_FormA">
+            <End Role="FormA" EntitySet="FormAs" />
+            <End Role="FormALog" EntitySet="FormALogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAAssign_UserProfile" Association="Self.FK_FormAAssign_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FormAAssign" EntitySet="FormAAssigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormACategory_ProductCode" Association="Self.FK_FormACategory_ProductCode">
+            <End Role="ProductCode" EntitySet="ProductCodes" />
+            <End Role="FormACategory" EntitySet="FormACategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocument_FormADocumentType" Association="Self.FK_FormADocument_FormADocumentType">
+            <End Role="FormADocumentType" EntitySet="FormADocumentTypes" />
+            <End Role="FormADocument" EntitySet="FormADocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormADocumentType_Resource" Association="Self.FK_FormADocumentType_Resource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="FormADocumentType" EntitySet="FormADocumentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAissue_Distributor_UserProfile" Association="Self.FK_FormAissue_Distributor_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FormAIssue" EntitySet="FormAIssues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormALog_UserProfile" Association="Self.FK_FormALog_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="FormALog" EntitySet="FormALogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAStateLog_FormAState" Association="Self.FK_FormAStateLog_FormAState">
+            <End Role="FormAState" EntitySet="FormAStates" />
+            <End Role="FormALog" EntitySet="FormALogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormAState_Resource" Association="Self.FK_FormAState_Resource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="FormAState" EntitySet="FormAStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Person_Primary" Association="Self.FK_UserProfile_Person_Primary">
+            <End Role="Person" EntitySet="People" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_Person_Secondary" Association="Self.FK_UserProfile_Person_Secondary">
+            <End Role="Person" EntitySet="People" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResourceDetail_Resource" Association="Self.FK_ResourceDetail_Resource">
+            <End Role="Resource" EntitySet="Resources" />
+            <End Role="ResourceDetail" EntitySet="ResourceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_ChangedBy" Association="Self.FK_UserProfile_ChangedBy">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="UserProfile1" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_UserProfile" Association="Self.FK_UserProfile_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="UserProfile1" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GspDBModelStoreContainer" CdmEntityContainer="GspDBEntities">
+          <EntitySetMapping Name="ActiveStates">
+            <EntityTypeMapping TypeName="GspDBModel.ActiveState">
+              <MappingFragment StoreEntitySet="ActiveState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusResourceKey" ColumnName="StatusResourceKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="GspDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="GspDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameResourceKey" ColumnName="NameResourceKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cultures">
+            <EntityTypeMapping TypeName="GspDBModel.Culture">
+              <MappingFragment StoreEntitySet="Culture">
+                <ScalarProperty Name="Culture1" ColumnName="Culture" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributors">
+            <EntityTypeMapping TypeName="GspDBModel.Distributor">
+              <MappingFragment StoreEntitySet="Distributor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DistributorNo" ColumnName="DistributorNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="ActiveStateId" ColumnName="ActiveStateId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="PsId" ColumnName="PsId" />
+                <ScalarProperty Name="PrimaryPersonId" ColumnName="PrimaryPersonId" />
+                <ScalarProperty Name="SecondaryPersonId" ColumnName="SecondaryPersonId" />
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistributorUserProfiles">
+            <EntityTypeMapping TypeName="GspDBModel.DistributorUserProfile">
+              <MappingFragment StoreEntitySet="DistributorUserProfile">
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="GspDBModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="GspDBModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DocumentContent" ColumnName="DocumentContent" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="AwsKey" ColumnName="AwsKey" />
+                <ScalarProperty Name="IsDocumentCleaned" ColumnName="IsDocumentCleaned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exporters">
+            <EntityTypeMapping TypeName="GspDBModel.Exporter">
+              <MappingFragment StoreEntitySet="Exporter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExporterNo" ColumnName="ExporterNo" />
+                <ScalarProperty Name="CompanyOrFactoryName" ColumnName="CompanyOrFactoryName" />
+                <ScalarProperty Name="FactoryTypeId" ColumnName="FactoryTypeId" />
+                <ScalarProperty Name="CorporateAddress" ColumnName="CorporateAddress" />
+                <ScalarProperty Name="CorporateAddressPsId" ColumnName="CorporateAddressPsId" />
+                <ScalarProperty Name="CorporateAddressDistrictId" ColumnName="CorporateAddressDistrictId" />
+                <ScalarProperty Name="CorporateAddressCountryId" ColumnName="CorporateAddressCountryId" />
+                <ScalarProperty Name="FactoryAddress" ColumnName="FactoryAddress" />
+                <ScalarProperty Name="FactoryAddressPsId" ColumnName="FactoryAddressPsId" />
+                <ScalarProperty Name="FactoryAddressDistrictId" ColumnName="FactoryAddressDistrictId" />
+                <ScalarProperty Name="FactoryAddressCountryId" ColumnName="FactoryAddressCountryId" />
+                <ScalarProperty Name="PrimaryPersonId" ColumnName="PrimaryPersonId" />
+                <ScalarProperty Name="SecondaryPersonId" ColumnName="SecondaryPersonId" />
+                <ScalarProperty Name="AssociationMembershipNo" ColumnName="AssociationMembershipNo" />
+                <ScalarProperty Name="AssociationBinNo" ColumnName="AssociationBinNo" />
+                <ScalarProperty Name="AssociationTradeLicense" ColumnName="AssociationTradeLicense" />
+                <ScalarProperty Name="AssociationTinNo" ColumnName="AssociationTinNo" />
+                <ScalarProperty Name="PeriodofValidation" ColumnName="PeriodofValidation" />
+                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+                <ScalarProperty Name="IndustrialProcessDescription" ColumnName="IndustrialProcessDescription" />
+                <ScalarProperty Name="GoodsDescription" ColumnName="GoodsDescription" />
+                <ScalarProperty Name="HsCode" ColumnName="HsCode" />
+                <ScalarProperty Name="ActiveStateId" ColumnName="ActiveStateId" />
+                <ScalarProperty Name="EpbRegistrationNo" ColumnName="EpbRegistrationNo" />
+                <ScalarProperty Name="RegistrationValidSince" ColumnName="RegistrationValidSince" />
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+                <ScalarProperty Name="IsUndertakingByExporter" ColumnName="IsUndertakingByExporter" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="Bonded" ColumnName="Bonded" />
+                <ScalarProperty Name="ErcNo" ColumnName="ErcNo" />
+                <ScalarProperty Name="BolRegNo" ColumnName="BolRegNo" />
+                <ScalarProperty Name="FireLicNo" ColumnName="FireLicNo" />
+                <ScalarProperty Name="BondLicNo" ColumnName="BondLicNo" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ExporterType" ColumnName="ExporterType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FactoryTypes">
+            <EntityTypeMapping TypeName="GspDBModel.FactoryType">
+              <MappingFragment StoreEntitySet="FactoryType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameResourceKey" ColumnName="NameResourceKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormAs">
+            <EntityTypeMapping TypeName="GspDBModel.FormA">
+              <MappingFragment StoreEntitySet="FormA">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FormANo" ColumnName="FormANo" />
+                <ScalarProperty Name="ExporterId" ColumnName="ExporterId" />
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="FormANoInt" ColumnName="FormANoInt" />
+                <ScalarProperty Name="FormAStateId" ColumnName="FormAStateId" />
+                <ScalarProperty Name="ImporterName" ColumnName="ImporterName" />
+                <ScalarProperty Name="ImporterAddress" ColumnName="ImporterAddress" />
+                <ScalarProperty Name="FreightBlNo" ColumnName="FreightBlNo" />
+                <ScalarProperty Name="FreightVessel" ColumnName="FreightVessel" />
+                <ScalarProperty Name="FreightContainerNo" ColumnName="FreightContainerNo" />
+                <ScalarProperty Name="FreightRoute" ColumnName="FreightRoute" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="AssociationRegNo" ColumnName="AssociationRegNo" />
+                <ScalarProperty Name="ExpNo" ColumnName="ExpNo" />
+                <ScalarProperty Name="EpbReferenceNo" ColumnName="EpbReferenceNo" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="NotesReceiving" ColumnName="NotesReceiving" />
+                <ScalarProperty Name="NotesVerification" ColumnName="NotesVerification" />
+                <ScalarProperty Name="NotesDelivery" ColumnName="NotesDelivery" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="BillOfLadingDate" ColumnName="BillOfLadingDate" />
+                <ScalarProperty Name="ItemNo" ColumnName="ItemNo" />
+                <ScalarProperty Name="MarksAndNoOfPackages" ColumnName="MarksAndNoOfPackages" />
+                <ScalarProperty Name="NoAndKindOfPackages" ColumnName="NoAndKindOfPackages" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="LcNo" ColumnName="LcNo" />
+                <ScalarProperty Name="LcDate" ColumnName="LcDate" />
+                <ScalarProperty Name="BbLcNo" ColumnName="BbLcNo" />
+                <ScalarProperty Name="BbLcDate" ColumnName="BbLcDate" />
+                <ScalarProperty Name="BillOfExportNo" ColumnName="BillOfExportNo" />
+                <ScalarProperty Name="BillOfExportDate" ColumnName="BillOfExportDate" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductCodeId" ColumnName="ProductCodeId" />
+                <ScalarProperty Name="Quantities" ColumnName="Quantities" />
+                <ScalarProperty Name="GrossWeight" ColumnName="GrossWeight" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceValue" ColumnName="InvoiceValue" />
+                <ScalarProperty Name="CollectorName" ColumnName="CollectorName" />
+                <ScalarProperty Name="CollectorTitle" ColumnName="CollectorTitle" />
+                <ScalarProperty Name="CollectorPhoneNo" ColumnName="CollectorPhoneNo" />
+                <ScalarProperty Name="EpbOfficerName" ColumnName="EpbOfficerName" />
+                <ScalarProperty Name="EpbOfficerTitle" ColumnName="EpbOfficerTitle" />
+                <ScalarProperty Name="EpbOfficeName" ColumnName="EpbOfficeName" />
+                <ScalarProperty Name="AuthorizePersonName" ColumnName="AuthorizePersonName" />
+                <ScalarProperty Name="AuthorizePersonTitle" ColumnName="AuthorizePersonTitle" />
+                <ScalarProperty Name="PaymentConfirmationNo" ColumnName="PaymentConfirmationNo" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="ServiceTime" ColumnName="ServiceTime" />
+                <ScalarProperty Name="DeclarationByExporterDate" ColumnName="DeclarationByExporterDate" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="NotesSubmissionByExporter" ColumnName="NotesSubmissionByExporter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormAAssigns">
+            <EntityTypeMapping TypeName="GspDBModel.FormAAssign">
+              <MappingFragment StoreEntitySet="FormAAssign">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="FormAFrom" ColumnName="FormAFrom" />
+                <ScalarProperty Name="FormATo" ColumnName="FormATo" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormACategories">
+            <EntityTypeMapping TypeName="GspDBModel.FormACategory">
+              <MappingFragment StoreEntitySet="FormACategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FormAId" ColumnName="FormAId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductCodeId" ColumnName="ProductCodeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormADocuments">
+            <EntityTypeMapping TypeName="GspDBModel.FormADocument">
+              <MappingFragment StoreEntitySet="FormADocument">
+                <ScalarProperty Name="FormAId" ColumnName="FormAId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="FormADocumentTypeId" ColumnName="FormADocumentTypeId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormADocumentTypes">
+            <EntityTypeMapping TypeName="GspDBModel.FormADocumentType">
+              <MappingFragment StoreEntitySet="FormADocumentType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameResourceKey" ColumnName="NameResourceKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormAIssues">
+            <EntityTypeMapping TypeName="GspDBModel.FormAIssue">
+              <MappingFragment StoreEntitySet="FormAIssue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="ExporterNo" ColumnName="ExporterNo" />
+                <ScalarProperty Name="ExporterName" ColumnName="ExporterName" />
+                <ScalarProperty Name="FormRange" ColumnName="FormRange" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ExporterId" ColumnName="ExporterId" />
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="DistributorUserId" ColumnName="DistributorUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormALogs">
+            <EntityTypeMapping TypeName="GspDBModel.FormALog">
+              <MappingFragment StoreEntitySet="FormALog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FromAId" ColumnName="FromAId" />
+                <ScalarProperty Name="FormAStateId" ColumnName="FormAStateId" />
+                <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+                <ScalarProperty Name="ActionBy" ColumnName="ActionBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormAStates">
+            <EntityTypeMapping TypeName="GspDBModel.FormAState">
+              <MappingFragment StoreEntitySet="FormAState">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameResourceKey" ColumnName="NameResourceKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PermissionDataId" ColumnName="PermissionDataId" />
+                <ScalarProperty Name="EditPermissionDataId" ColumnName="EditPermissionDataId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="GspDBModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="OfficePhoneNo" ColumnName="OfficePhoneNo" />
+                <ScalarProperty Name="MobilePhoneNo" ColumnName="MobilePhoneNo" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCodes">
+            <EntityTypeMapping TypeName="GspDBModel.ProductCode">
+              <MappingFragment StoreEntitySet="ProductCode">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resources">
+            <EntityTypeMapping TypeName="GspDBModel.Resource">
+              <MappingFragment StoreEntitySet="Resource">
+                <ScalarProperty Name="ResourceKey" ColumnName="ResourceKey" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceDetails">
+            <EntityTypeMapping TypeName="GspDBModel.ResourceDetail">
+              <MappingFragment StoreEntitySet="ResourceDetail">
+                <ScalarProperty Name="ResourceKey" ColumnName="ResourceKey" />
+                <ScalarProperty Name="Culture" ColumnName="Culture" />
+                <ScalarProperty Name="ResourceValue" ColumnName="ResourceValue" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GspDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thanas">
+            <EntityTypeMapping TypeName="GspDBModel.Thana">
+              <MappingFragment StoreEntitySet="Thana">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="GspDBModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PrimaryPersonId" ColumnName="PrimaryPersonId" />
+                <ScalarProperty Name="SecondaryPersonId" ColumnName="SecondaryPersonId" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="CultureCode" ColumnName="CultureCode" />
+                <ScalarProperty Name="ActiveStateId" ColumnName="ActiveStateId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Changed" ColumnName="Changed" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

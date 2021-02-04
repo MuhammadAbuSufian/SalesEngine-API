@@ -1,0 +1,116 @@
+<!Doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <title data-ng-bind="'EPB Payslip | ' + $state.current.data.pageTitle"></title>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/ng-grid.min.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="Content/angular-busy.min.css" rel="stylesheet" />
+
+    <link href="dist/v1.0.4/styles/style.min.css" rel="stylesheet" />
+    
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+
+</head>
+<body ng-controller="AppController">
+
+    <header ng-include="'dist/v1.0.4/views/nav.html'"></header>
+
+    <div class="container">
+        <div class="alertStyle alert-block text-center fade out" ng-class="{in: alert.isAlert}">
+            <span ng-hide="alert.autoHide">
+                <span uib-alert ng-class="'alert-' + (alert.type || 'warning')" close="alert.close()">{{alert.msg}} </span>
+            </span>
+            <span ng-show="alert.autoHide">
+                <span uib-alert ng-class="'alert-' + (alert.type || 'warning')">{{alert.msg}}</span>
+            </span>
+        </div>
+    </div>
+
+
+    <div ui-view class="container"></div>
+    <br />
+    <br />
+    <br />
+
+    <footer ng-include="'dist/v1.0.4/views/footer.html'"></footer>
+
+
+    <!-- Scripts -->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <!-- angular -->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+
+
+    <!-- angular-ui-bootstrap -->
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/angular-ui/sortable.js"></script>
+
+    <script src="Scripts/ng-file-upload-all.min.js"></script>
+
+    <!-- checklist -->
+    <script src="Scripts/checklist-model.js"></script>
+
+    <!-- busy screen -->
+    <script src="Scripts/angular-busy.min.js"></script>
+
+
+<!-- app scripts -->
+    <script src="dist/v1.0.4/scripts/config-scripts.min.js"></script>
+    <script src="dist/v1.0.4/scripts/directive-scripts.min.js"></script>
+    <script src="dist/v1.0.4/scripts/service-scripts.min.js"></script>
+    <script src="dist/v1.0.4/scripts/controller-scripts.min.js"></script>
+    
+
+
+
+
+    <script>
+        $(document)
+            .on('click',
+                function() {
+                    $('.collapse').collapse('hide');
+                });
+    </script>
+
+    <script>
+        $(document)
+            .ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+    </script>
+</body>
+</html>

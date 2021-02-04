@@ -1,0 +1,48 @@
+﻿<!--<script type="text/ng-template" id="roleDeleteModalContent.html">-->
+<div class="modal-header" style="text-align: center">
+    <h3 class="modal-title">Please Confirm</h3>
+</div>
+<div class="modal-body">
+    <table class="table">
+        <tbody>
+            <tr class="active">
+                <th>
+                    Exporter Name
+                </th>
+                <td><strong>{{data.ExporterName}}</strong></td>
+            </tr>
+            <tr>
+                <th>
+                    Exporter No
+                </th>
+                <td><strong>{{data.ExporterNumber}}</strong></td>
+            </tr>
+            <tr class="active">
+                <th>
+                    Transaction ID
+                </th>
+                <td><strong>{{data.TransectionNumber}}</strong></td>
+            </tr>
+            <tr>
+                <th>
+                    Total Amount
+                </th>
+                <td><strong>{{data.TotalAmount}}</strong></td>
+            </tr>
+            <tr class="active">
+                <th>
+                    Deposit Date
+                </th>
+                <td><strong>{{data.DepositDate | date}}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <br />
+    <h4 style="text-align: center;color:red"><strong>Are you sure you want to {{action}} this !!! </strong>      <strong style="color: blueviolet">{{data.Name}} </strong></h4>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success pull-right" type="button" ng-click="ok()">Yes</button>
+    <button class="btn btn-warning pull-right" type="button" ng-click="cancel()" style="margin-right:5px">Close</button>
+</div>
+<!--</script>-->

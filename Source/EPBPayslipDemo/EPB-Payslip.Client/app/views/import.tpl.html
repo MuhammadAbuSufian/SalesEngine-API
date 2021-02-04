@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" ng-app="psapp">
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="$rootScope.title + '  EPB Payslip'">EPB Payslip</title>
+
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/ng-grid.min.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="app/styles/style.css" />
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<nav class="nav navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="dashboard"><img src="app/images/logo.png" /> <strong>EPB Payslip</strong></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse" ng-controller="AppController">
+
+            <ul ng-show="isLoggedIn" class="nav navbar-nav pull-right">
+                <li><a style="cursor: pointer" ng-click="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">Import Transaction List (Excel/CSV)</div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="file">Select Flle:</label>
+                        <input type="file" class="form-control" id="file" name="file">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <br />
+                    <a href="import_result.html" class="btn btn-success" role="button">Upload</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="Scripts/jquery-3.1.1.min.js"></script>
+<script src="Scripts/bootstrap.min.js"></script>
+
+
+    <div class="panel-body"></div>
+
+    <div class="nav navbar navbar-fixed-bottom navbar-default">
+        <!-- FOOTER -->
+        <footer class="text-center">
+            &copy; Index IA Limited <span app-version></span>
+        </footer>
+    </div>
+
+</body>
+</html>

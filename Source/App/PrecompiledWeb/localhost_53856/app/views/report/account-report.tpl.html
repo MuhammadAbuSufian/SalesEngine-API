@@ -1,0 +1,100 @@
+﻿<br/>
+<div class="row" cg-busy="promise">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Account Report</div>
+
+            <div class="panel-body">
+
+                <div class="col-sm-12">
+                    <form ng-submit="filter()">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Date From</label>
+                                <input type="date" class="form-control" ng-model="searchRequest.DateFrom"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Date To</label>
+                                <input type="date" class="form-control" ng-model="searchRequest.DateTo"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Exporter</label>
+                                <!--<select class="form-control" ng-model="searchRequest.ExporterId" ng-options="i.Id as i.Name for i in data.exporterDropdown">
+                                    <option value="">Please Select</option>
+                                </select>-->
+
+                                <input type="text" class="form-control" ng-model="searchRequest.SelectedExporter"
+                                       typeahead-on-select="onSelect($item, $model, $label)"
+                                       typeahead-editable="false"
+                                       uib-typeahead="i as i.Name for i in loadExporterDropdown($viewValue)"
+                                       typeahead-loading="loadingExporters">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Audit Thrashold (%)</label>
+                                <input type="number" class="form-control" ng-model="searchRequest.AuditThrashold" />
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>Service Office </label>
+                                <select class="form-control" ng-model="searchRequest.Keyword" ng-options="i.Id as i.Name for i in serviceOffices" >     
+                                    <option value="">Please Select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1" >
+                            <div class="form-group" >                                 
+                                <button type="submit"  ng-hide="isUpdateMode" ng-disabled="!searchRequest.Keyword" class="btn btn-success glyphicon glyphicon-search"></button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+
+                <div class="col-sm-12 table-responsive">
+                    <br/>
+                    <button type="button" class="btn btn-sm btn-success glyphicon glyphicon-print pull-left"
+                            ng-click="openPrintModal('lg','account-report-','AccountReport', false)">
+                        PRINT
+                    </button>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <td>#</td>
+                            <th>Date</th>
+                            <th>Exporter ID</th>
+                            <th>Amount</th>
+                            <th>Transaction ID</th>
+                            <th>Verification Status</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="l in data.list track by $index">
+                            <td>{{$index + 1}}</td>
+                            <td>{{l.DepositDate | date}}</td>
+                            <td>{{l.ExporterNumber}}</td>
+                            <td>{{l.TotalAmount}}</td>
+                            <td>{{l.TransectionNumber}}</td>
+                            <td>{{l.TransectionStatusName}}</td>
+                        </tr>
+                        
+                        </tbody>
+                    </table>
+
+                    <br />
+                    <div data-ng-include="'app/views/paging.html'"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

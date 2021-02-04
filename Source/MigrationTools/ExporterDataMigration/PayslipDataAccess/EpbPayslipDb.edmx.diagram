@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="25d41cc1090b472d998a2c79d8d52d6f" Name="Diagram1">
+        <EntityTypeShape EntityType="EpbPayslipDbModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.Account" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.AspNetPermission" Width="1.5" PointX="11" PointY="2" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.AspNetResource" Width="1.5" PointX="8.75" PointY="1.125" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.AspNetRole" Width="1.5" PointX="8.75" PointY="4.25" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.AspNetUserClaim" Width="1.5" PointX="13.25" PointY="5.75" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.AspNetUserLogin" Width="1.5" PointX="13.25" PointY="8.5" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.AspNetUser" Width="1.5" PointX="11" PointY="5.75" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.EpbService" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.EpbServiceLog" Width="1.5" PointX="5.25" PointY="11.625" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.Exporter" Width="1.5" PointX="0.75" PointY="6.625" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.ExporterEpbService" Width="1.5" PointX="8.25" PointY="10.75" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.ExporterEpbServicePrintLog" Width="1.5" PointX="5.25" PointY="22.25" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.Import" Width="1.5" PointX="5.75" PointY="6" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.ServiceIssueType" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.ServiceIssueTypeHourlyCost" Width="1.5" PointX="8.25" PointY="18.125" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.ServiceType" Width="1.5" PointX="3.75" PointY="1.25" />
+        <EntityTypeShape EntityType="EpbPayslipDbModel.SyncSetting" Width="1.5" PointX="10.75" PointY="12" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_Account_dbo_Exporter_ExporterId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_EpbService_dbo_Exporter_ExporterId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId" />
+        <AssociationConnector Association="EpbPayslipDbModel.FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId" />
+        <AssociationConnector Association="EpbPayslipDbModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

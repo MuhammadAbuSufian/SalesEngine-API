@@ -1,0 +1,106 @@
+
+    <div class="modal-header">
+        <h3 class="modal-title">Print Preview</h3>
+    </div>
+    <div class="modal-body" id="printable">
+        <div class="row" style="font-size: 13px">
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span style="font-size: 15px;"><strong>Export Promotion Bureau - EPB Copy</strong></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <span style="font-size: 14px;">Exporter Name: <strong>{{data.Exporter.CompanyOrFactoryName}}</strong></span><br />
+                        <span style="font-size: 15px;">Service: {{getObject(data.ServiceTypeId, 'Id', data.EpbService.ServiceTypes).Name}} {{getObject(data.ServiceIssueTypeId, 'Id', data.EpbService.ServiceIssueTypes).Name}} ({{data.ServiceHour}} Hours)</span>
+                    </div>
+                    <div class="col-xs-6">
+                        Request ID: {{data.EpbService.PayslipRequestId}} <br/>
+                        Payslip: <span style="font-size:12px">{{data.BarcodeNumber}}</span><br/>
+                        <!--Payslip: {{data.PayslipNumber}} <br/>-->
+                        Exporter No: <strong>{{data.Exporter.ExporterNumber}}</strong> <br/>
+                        <!--Exporter Name: {{data.EpbService.Exporter.CompanyOrFactoryName}}-->
+                        Printing Date: {{data.today | date}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        Quantity: {{data.Quantity}}
+                    </div>
+                    <div class="col-xs-6">
+                        Cost: {{data.ServiceAmount | currency : 'BDT '}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img ng-src="{{serverUrl + data.BarcodeImageUrl}}" width="100%" alt="barcode" />
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0;">
+                    <div class="col-xs-6">
+                        Current Balance: {{data.EpbService.Exporter.CurrentBalance}}<br />
+                        <span style="font-size: 10px;">Verified by: {{user.UserName}}</span><br />
+                        <code><span style="font-size: 10px;">Developed by: Index IA Ltd. (www.indexcap.com)</span></code>
+                    </div>
+                    <div class="col-xs-6">
+                        Signature (EPB Office)
+                        <div style="margin-top: 40px;">
+                            ___________________________
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span style="font-size: 15px;"><strong>Export Promotion Bureau - Exporter Copy</strong></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        TCB Bhaban, 1 Kawran Bazar <br />
+                        Dhaka-1215 <br />
+                        Printing Date: {{data.today | date}}
+                    </div>
+                    <div class="col-xs-6">
+                        Request ID: {{data.EpbService.PayslipRequestId}} <br/>
+                        Payslip: <span style="font-size:12px">{{data.BarcodeNumber}}</span><br/>
+                        <!--Payslip: {{data.PayslipNumber}} <br/>-->
+                        Exporter No: <strong>{{data.Exporter.ExporterNumber}}</strong>
+                        <!--Exporter Name: {{data.EpbService.Exporter.CompanyOrFactoryName}}-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <span style="font-size: 14px;">Exporter Name: <strong>{{data.Exporter.CompanyOrFactoryName}}</strong></span><br />
+                        <span style="font-size: 12px;">Service: {{getObject(data.ServiceTypeId, 'Id', data.EpbService.ServiceTypes).Name}} {{getObject(data.ServiceIssueTypeId, 'Id', data.EpbService.ServiceIssueTypes).Name}} ({{data.ServiceHour}} Hours)</span><br />
+                    </div>
+                    <div class="col-xs-6">
+                        Quantity: {{data.Quantity}} <br />
+                        Cost: {{data.ServiceAmount | currency : 'BDT '}}
+                    </div>
+                </div>
+                <div class="row" style="margin-left: 0; margin-top: 60px;">
+                    <div class="col-xs-6">
+                        Current Balance: {{data.EpbService.Exporter.CurrentBalance}}<br />
+                        <span style="font-size: 12px;">Verified by: {{user.UserName}}</span><br />
+                        <code><span style="font-size: 12px;">Developed by: Index IA Ltd. (www.indexcap.com)</span></code>
+                    </div>
+                    <div class="col-xs-6">
+                        Signature (EPB Office)
+                        <div style="margin-top: 40px;">
+                            ___________________________
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary pull-left" type="button" ng-click="printWithExporterEpbServiceUpdate('printable')">Print</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+

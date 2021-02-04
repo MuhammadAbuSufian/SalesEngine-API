@@ -1,0 +1,288 @@
+﻿<div class="row">
+
+
+<div class="col-sm-5" >
+    <div class="panel-group">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <span class="glyphicon glyphicon-plus"></span> Account
+                </div>
+            </div>
+            <div class="panel-body">
+                <form>
+
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Account No <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" ng-model="payslip.AccountNo" placeholder="Account No" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Account Name</label>
+                                    <input type="text" class="form-control" ng-model="payslip.AccountName" placeholder="Account Name" value="Export Promotion Bureau" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Exporter No</label>
+                                    <input type="text" class="form-control" ng-model="payslip.ExporterNo" placeholder="Exporter no">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Deposit Date</label>
+                                    <input type="date" class="form-control" ng-model="payslip.DepositDate" placeholder="Deposit date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    <input type="text" class="form-control" ng-model="payslip.BankName" placeholder="Bank name" ng-disabled="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Branch Name</label>
+                                    <input type="text" class="form-control" ng-model="payslip.BranchName" placeholder="Branch name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Transaction Id</label>
+                                    <input type="text" class="form-control" ng-model="payslip.TransactionId" placeholder="Transection Id">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-6">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Depositor Name</label>
+
+                                    <input type="text" class="form-control" ng-model="payslip.DepositorName" placeholder="Depositor name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Depositor Address</label>
+
+                                    <input type="text" class="form-control" ng-model="payslip.DepositorAddress" placeholder="Depositor address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Depositor Phone</label>
+
+                                    <input type="text" class="form-control" ng-model="payslip.DepositorPhone" placeholder="Depositor phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Total Amount</label>
+
+                                    <input type="text" class="form-control" ng-model="payslip.TotalAmount" placeholder="Total amount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Amount (In Words)</label>
+                                    <input type="text" class="form-control" ng-model="payslip.AmountInWords" placeholder="Amount in words">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Upload Slip: </label>
+
+                                    <input type="file" ng-model="payslip.SlipImageUrl"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <button type="button" ui-sref="dashboard" class="btn btn-default">Cancel</button>
+                                    <button type="button" ng-click="request()" class="btn btn-info">Add</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-7" >
+    <div class="panel-group">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <span class="glyphicon glyphicon-list"></span> Transaction History
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div>
+                                Total Deposited:<strong> BDT 15000</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div>
+                                Service Taken:<strong> BDT 10000</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <div>Current Balanace:<strong> BDT 5000</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <input class="form-control" type="text" placeholder="Search by Exporter No, Transection Id, Depositor Name"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <select class="form-control" type="text">
+                                <option value="all">All</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Verified">Verified</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <table class="table table-responsive table-striped">
+                    <thead>
+                    <tr>
+                        <th>Deposit Date</th>
+                        <th>Exporter No</th>
+                        <th>Transaction Id</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>BD0001</td>
+                        <td>12018</td>
+                        <td>{{today | date}}</td>
+                        <td>BDT 3500</td>
+                        <td>Pending</td>
+                        <td>
+                            <a href="javascript:(void)">Edit</a>
+                            <button type="button" class="btn btn-link" href="javascript:(void)">Verify</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BD0002</td>
+                        <td>12012</td>
+                        <td>{{today | date}}</td>
+                        <td>BDT 2000</td>
+                        <td>Pending</td>
+                        <td>
+                            <a href="javascript:(void)">Edit</a>
+                            <button type="button" class="btn btn-link" href="javascript:(void)">Verify</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BD0001</td>
+                        <td>12017</td>
+                        <td>{{today | date}}</td>
+                        <td>BDT 3000</td>
+                        <td>Verified</td>
+                        <td>
+                            <a href="javascript:(void)">Edit</a>
+                            <button type="button" ng-disabled="true" class="btn btn-link" href="javascript:(void)">Verified</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BD0005</td>
+                        <td>12013</td>
+                        <td>{{today | date}}</td>
+                        <td>BDT 9000</td>
+                        <td>Verified</td>
+                        <td>
+                            <a href="javascript:(void)">Edit</a>
+                            <button type="button" ng-disabled="true" class="btn btn-link" href="javascript:(void)">Verified</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>BD0007</td>
+                        <td>12015</td>
+                        <td>{{today | date}}</td>
+                        <td>BDT 8000</td>
+                        <td>Verified</td>
+                        <td>
+                            <a href="javascript:(void)">Edit</a>
+                            <button type="button" ng-disabled="true" class="btn btn-link" href="javascript:(void)">Verified</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <button type="button" class="btn btn-default">PREVIOUS</button>
+                            <button type="button" class="btn btn-default pull-right">NEXT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div ui-view class="slide"></div>

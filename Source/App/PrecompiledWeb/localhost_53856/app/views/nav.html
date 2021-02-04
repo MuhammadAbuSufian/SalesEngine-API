@@ -1,0 +1,89 @@
+﻿<nav class="nav navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref-active="active" ui-sref="root.dashboard"><img ng-src="app/images/logo.png" /> <strong>EPB Payslip</strong></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+
+            <ul class="nav navbar-nav">
+                <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)"><a ui-sref="root.dashboard">Dashboard</a></li>
+                <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)"><a ui-sref="root.service">Service</a></li>
+                <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)"><a ui-sref="root.account">Account</a></li>
+                <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)">
+                    <a class="dropdown-toggle" data-toggle="dropdown" ng-href="javascript:(void)">Import <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="root.import">Import Data</a></li>
+                        <li ui-sref-active="active"><a ui-sref="root.import-log">Import Log</a></li>
+                    </ul>
+                </li>
+
+                <li ui-sref-active="active" class="dropdown" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)">
+                    <a class="dropdown-toggle" data-toggle="dropdown" ng-href="javascript:(void)">
+                        Report
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="root.report.account">Account Report</a></li>
+                        <li ui-sref-active="active"><a ui-sref="root.report.payslip">Payslip Report</a></li>
+                        <!--<li ui-sref-active="active"><a ui-sref="root.report.service">Service Report</a></li>-->
+                        <!--<li ui-sref-active="active"><a ui-sref="root.permission">Audit Report</a></li>-->
+                    </ul>
+                </li>               
+ 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="javascript:(void)" ng-show="user!=null" ng-click="logout()"><span class="text-danger">Sign out</span></a></li>-->
+                <li ui-sref-active="active" class="dropdown" ng-show="user!=null">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:(void)">
+                        {{user.UserName}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="root.profile">Profile</a></li>
+                        <li ng-click="logout()"><a ng-href="javascript:(void)">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn && isSystemAdminUser">
+                <li ui-sref-active="active" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:(void)">
+                        Access Control
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active"><a ui-sref="root.role">Role</a></li>
+                        <li ui-sref-active="active"><a ui-sref="root.resource">Resource</a></li>
+                        <li ui-sref-active="active"><a ui-sref="root.permission">Permission</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="isLoggedIn">
+                <li ui-sref-active="active" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:(void)">
+                        Setup
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser)"><a ui-sref="root.setup.service-type">Service Type</a></li>
+                        <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser)"><a ui-sref="root.setup.issue-name">Issue Name</a></li>
+                        <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser)"><a ui-sref="root.setup.service-issue-type">Service Issue Type</a></li>
+                        <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)"><a ui-sref="root.setup.exporter">Exporter</a></li>
+                        <!--<li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser || isDealingAssistantUser)"><a ui-sref="root.setup.temp-exporter">Non-Exporter</a></li>-->
+                        <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser)"><a ui-sref="root.user">User</a></li>
+                        <li ui-sref-active="active" ng-show="isLoggedIn && (isSystemAdminUser || isAdminUser)"><a ui-sref="root.setting">Settings</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--<ul class="nav navbar-nav navbar-right" ng-show="isSystemAdminUser || isAdminUser">
+                <li ui-sref-active="active"><a ui-sref="root.setup">Setup</a></li>
+                <li ui-sref-active="active"><a ui-sref="root.user">User</a></li>
+            </ul>-->
+        </div>
+    </div>
+</nav>

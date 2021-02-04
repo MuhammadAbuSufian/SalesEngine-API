@@ -1,0 +1,63 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Print Preview</h3>
+</div>
+<div class="modal-body" id="printable" style="font-size: 14px">
+    <div class="row text-center">
+        <h4>Export Promotion Bureau</h4>
+        <address>
+            TCB Bhaban, 1 Kawran Bazar <br/>
+            Dhaka-1215 <br/>
+            Printing Date: {{data.today | date}}
+        </address>
+    </div>
+    <h5 class="text-center">
+        Account Report
+        ({{data.searchRequest.DateFrom | date}} - {{data.searchRequest.DateTo | date}})
+        Audit Trashold: {{data.searchRequest.AuditThrashold}}
+    </h5>
+    <h5 class="text-center">
+        {{data.searchRequest.SelectedExporter.Name}}
+    </h5>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <td>#</td>
+                <th>Date</th>
+                <th>Exporter ID</th>
+                <th>Amount</th>
+                <th>Transaction ID</th>
+                <th>Verification Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="l in data.list track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{l.DepositDate | date}}</td>
+                <td>{{l.ExporterNumber}}</td>
+                <td>{{l.TotalAmount}}</td>
+                <td>{{l.TransectionNumber}}</td>
+                <td>{{l.TransectionStatusName}}</td>
+            </tr>
+        </tbody>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td ><strong>Total : {{totalAmount |currency:" ":0}} </strong></td>
+        <td></td>
+        <td></td>
+    </table>
+    
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12 text-right">Signature (EPB Office)</div>
+        <br/>
+        <br/>
+        <div class="col-sm-6">Verified by: {{user.UserName}}</div>
+        <div class="col-sm-6 text-right">___________________________</div>
+        <div class="col-sm-12 text-center">Developed by: Index IA Ltd. (www.indexcapgroup.com)</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary pull-left" type="button" ng-click="print('printable')">Print</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

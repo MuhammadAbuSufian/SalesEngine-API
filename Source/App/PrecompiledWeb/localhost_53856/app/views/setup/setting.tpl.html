@@ -1,0 +1,149 @@
+﻿<br />
+<div class="row" cg-busy="promise">
+    <div class="col-sm-12">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <span class=""></span>  Company  Setting
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <form ng-submit="save()">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Time Zones</label>
+                                        <select class="form-control" ng-model="model.TimeZone" required
+                                                ng-options="i.Name as i.Name for i in data.settingDropdown">
+                                            <option value="">Please Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Company Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" ng-model="model.Name" required placeholder="Company Name" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Address <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" ng-model="model.Address" required placeholder="Address" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Phone <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" ng-model="model.Phone" required placeholder="Phone" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Email <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" ng-model="model.Email" required placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Website</label>
+                                        <input type="text" class="form-control" ng-model="model.Website" placeholder="Website" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Facebook</label>
+                                        <input type="text" class="form-control" ng-model="model.Facebook" placeholder="Facebook" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Twitter</label>
+                                        <input type="text" class="form-control" ng-model="model.Twitter" placeholder="Twitter" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>LinkedIn</label>
+                                        <input type="text" class="form-control" ng-model="model.LinkedIn" placeholder="LinkedIn" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>PoweredBy</label>
+                                        <input type="text" class="form-control" ng-model="model.PoweredBy" placeholder="PoweredBy" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Has Hosting Aggreement</label>
+                                        <input type="text" class="form-control" ng-model="model.HasHostingAggreemenet" placeholder="Has Hosting Aggreement" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Hosting Valid Till</label>
+                                        <input type="date" class="form-control" ng-model="model.HostingValidTill"
+                                               ng-model-options="{timezone: 'utc+6'}" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Has Service Aggrement</label>
+                                        <input type="text" class="form-control" ng-model="model.HasServiceAggrement" placeholder="Has Service Aggrement" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Service Valid Till</label>
+                                        <input type="date" class="form-control" ng-model="model.ServiceValidTill"
+                                               ng-model-options="{timezone: 'utc+6'}" required="required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Descriptions</label>
+                                        <input type="text" class="form-control" ng-model="model.Descriptions" placeholder="Descriptions" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Slogan</label>
+                                        <input type="text" class="form-control" ng-model="model.Slogan" placeholder="Slogan" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Contact Person Name</label>
+                                        <input type="text" class="form-control" ng-model="model.ContactPersonName" placeholder="Contact Person Name" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Contact Person Phone</label>
+                                        <input type="text" class="form-control" ng-model="model.ContactPersonPhone" placeholder="Contact Person Phone" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Contact Person Email</label>
+                                        <input type="text" class="form-control" ng-model="model.ContactPersonEmail" placeholder="Contact Person Email" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button ng-hide="isUpdateMode" type="submit" class="btn btn-success glyphicon glyphicon-plus" ng-disabled="!model.TimeZone ||!model.Name"> SAVE</button>
+                                        <button type="submit" ng-show="isUpdateMode" class="btn btn-warning glyphicon glyphicon-plus" ng-disabled="!model.TimeZone ||!model.Name"> SAVE CHANGES</button>
+                                        <a ui-sref="root.dashboard" ng-show="isUpdateMode" class="btn btn-danger">Cancel</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

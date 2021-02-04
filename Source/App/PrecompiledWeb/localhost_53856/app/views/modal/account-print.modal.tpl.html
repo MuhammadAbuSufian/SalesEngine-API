@@ -1,0 +1,60 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Print Preview</h3>
+</div>
+<div class="modal-body" id="printable" style="font-size: 14px">
+    <div class="row text-center">
+        <h4>Export Promotion Bureau</h4>
+        <address>
+            TCB Bhaban, 1 Kawran Bazar <br/>
+            Dhaka-1215 <br/>
+            Printing Date: {{data.today | date}}
+        </address>
+    </div>
+    <h5 class="text-center">Payment Varification Confirmation Receipt</h5>
+    <h4 class="text-center">Receipt No: {{data.EpbPaymentReceiptNumber}}</h4>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Payment Method</th>
+            <th>Bank/PO</th>
+            <th>Deposit Date</th>
+            <th>Depositor Name</th>
+            <th>Exporter No</th>
+            <th>Transection Id</th>
+            <th>Total Amount</th>
+        </tr>
+        <tr>
+            <td>{{data.PaymentMethodName}}</td>
+            <td>{{data.BankName}}</td>
+            <td>{{data.DepositDate | date}}</td>
+            <td>{{data.DepositorName}}</td>
+            <td>{{data.Exporter.ExporterNumber}}</td>
+            <td>{{data.TransectionNumber}}</td>
+            <td>{{data.TotalAmount}}</td>
+        </tr>
+
+        <tr>            
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>Current Balance</th>
+            <th>{{data.Exporter.CurrentBalance}}</th>
+        </tr>
+        </thead>
+    </table>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12 text-right">Signature (EPB Office)</div>
+        <br/>
+        <br/>
+        <div class="col-sm-6">Verified by: {{user.UserName}}</div>
+        <div class="col-sm-6 text-right">___________________________</div>
+        <div class="col-sm-12 text-center">Developed by: Index IA Ltd. (www.indexcapgroup.com)</div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary pull-left" type="button" ng-click="print('printable')">Print</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

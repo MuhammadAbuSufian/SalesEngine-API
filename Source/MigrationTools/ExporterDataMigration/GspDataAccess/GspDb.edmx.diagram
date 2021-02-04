@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d012793ae763422997ddcf7f9de13cc7" Name="Diagram1">
+        <EntityTypeShape EntityType="GspDBModel.ActiveState" Width="1.5" PointX="3" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Category" Width="1.5" PointX="13.5" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Country" Width="1.5" PointX="3" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Culture" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Distributor" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.DistributorUserProfile" Width="1.5" PointX="7.5" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.District" Width="1.5" PointX="3" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Document" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Exporter" Width="1.5" PointX="8.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FactoryType" Width="1.5" PointX="3" PointY="33.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormA" Width="1.5" PointX="13.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormAAssign" Width="1.5" PointX="10.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormACategory" Width="1.5" PointX="15.75" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormADocument" Width="1.5" PointX="15.75" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormADocumentType" Width="1.5" PointX="3" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormAIssue" Width="1.5" PointX="10.5" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormALog" Width="1.5" PointX="18.75" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.FormAState" Width="1.5" PointX="3" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Person" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.ProductCode" Width="1.5" PointX="13.5" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Resource" Width="1.5" PointX="0.75" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.ResourceDetail" Width="1.5" PointX="6" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.Thana" Width="1.5" PointX="3" PointY="46" IsExpanded="true" />
+        <EntityTypeShape EntityType="GspDBModel.UserProfile" Width="1.5" PointX="5.25" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="GspDBModel.FK_ActiveState_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_ActiveState" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_ActiveState" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_ActiveState" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormACategory_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_ProductCode_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Country_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_Country4" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_Country5" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_ResourceDetail_CultureInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_Culture" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_District" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_Person_Primary" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_Person_Secondary" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_Thana" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Distributor_UserProfile1" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_DistributorUserProfile_Distributor" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormA_Distributor" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAAssign_Distributor" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAIssue_Distributor" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_DistributorUserProfile_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_District" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_District1" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormA_District" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Thana_District" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormADocument_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_Document" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_FactoryType" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_Person_Primary" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_Person_Secondary" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_Thana" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_Thana1" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_Exporter_UserProfile1" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormA_Exporter" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAIssue_Exporter" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FactoryType_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormA_FormAState" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormA_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormA_UserProfile1" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormACategory_FormA" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormADocument_FormA" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAStateLog_FormA" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAAssign_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormACategory_ProductCode" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormADocument_FormADocumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormADocumentType_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAissue_Distributor_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormALog_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAStateLog_FormAState" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_FormAState_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_Person_Primary" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_Person_Secondary" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_ResourceDetail_Resource" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_ChangedBy" ManuallyRouted="false" />
+        <AssociationConnector Association="GspDBModel.FK_UserProfile_UserProfile" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

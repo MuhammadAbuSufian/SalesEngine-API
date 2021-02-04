@@ -1,0 +1,247 @@
+﻿<br />
+<div class="row" cg-busy="promise">
+    <div class="col-sm-12">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <span></span> Service Detail <span class="pull-right">{{model.PayslipRequestId}} (<span class="text-danger">{{model.ServiceStatusName}}</span>)</span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                <form ng-submit="filter()">
+                                    <div class="col-sm-8">
+                                        <input type="search" ng-show="model.ServiceStatus==2" name="Search" ng-model="searchRequest.Keyword" ng-change="reset()" class="form-control" placeholder="Search by Payslip No" />
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-success" type="submit" ng-show="model.ServiceStatus==2">
+                                            <span class="glyphicon glyphicon-search text-center"></span>
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <form ng-submit="save()">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <br />
+                                                <div>
+                                                    Exporter No:<strong> {{model.ExporterNumber}}</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <br />
+                                                <div>
+                                                    Exporter Name:<strong> {{model.ExporterName}}</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <br />
+                                                <div>
+                                                    Current Balance:<strong> {{model.InitialCurrentBalance}}</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <br />
+                                                <div>
+                                                    Remaining Balance:<strong> {{model.AfterServiceTakenBalance}}</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div ng-hide="model.ServiceStatus==2">
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Service Caegory</label>
+                                            <select class="form-control" ng-model="exporterEpbService.ServiceTypeId"
+                                                    ng-options="i.Id as i.Name for i in data.serviceTypeDropdown"
+                                                    ng-change="loadDropdown('serviceIssueName', exporterEpbService.ServiceTypeId)"
+                                                    ng-disabled="model.ServiceStatus==2"></select>
+                                        </div>
+                                    </div>
+
+                                
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Service Issue Name</label>
+                                            <select class="form-control" ng-model="exporterEpbService.ServiceIssueTypeId"
+                                                    ng-options="i.Id as i.Name for i in data.serviceIssueNameDropdown"
+                                                    ng-change="loadDropdown('serviceIssueNameHourlyCost', exporterEpbService.ServiceIssueTypeId);bindServiceCost()"
+                                                    ng-disabled="model.ServiceStatus==2"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2" ng-hide="data.serviceIssueNameHourlyCostDropdown.length==0">
+                                        <div class="form-group">
+                                            <label>Service Hours</label>
+                                            <select class="form-control" ng-model="exporterEpbService.ServiceHour"
+                                                    ng-options="i.Name as i.Name for i in data.serviceIssueNameHourlyCostDropdown"
+                                                    ng-change="bindHourlyCost(exporterEpbService.ServiceHour)"
+                                                    ng-disabled="model.ServiceStatus==2"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Quantity</label>
+                                            <input type="number" ng-model="exporterEpbService.Quantity" ng-change="calculateServiceAmount()" ng-disabled="model.ServiceStatus==2" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Service Cost</label>
+                                            <input type="number" class="form-control" ng-model="exporterEpbService.ServiceAmount" ng-disabled="true" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <div class="form-group">
+                                            <br />
+                                            <button type="button" ng-disabled="model.ServiceStatus==2" class="btn btn-success glyphicon glyphicon-plus pull-right" ng-click="add()"></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <br />
+                            </div>
+
+
+                            <div class="panel-body">
+
+                                <button type="button" class="btn btn-warning" ui-sref="root.dashboard" ng-show="model.ServiceStatus==2" style="margin-right:5px">BACK</button>
+
+                                <button type="button" class="btn btn-info" ng-click="showLog('lg', model,'ShowLog')">SHOW LOG</button>
+
+                                <button type="button" class="btn btn-primary glyphicon glyphicon-print pull-right"
+                                        ng-show="model.ServiceStatus==2"
+                                        ng-click="openAllPrintModal('lg',$stateParams['id'], 'all-service-','AllService')"
+                                        ng-disabled="model.PrintCount>0  && user.RoleNames[0]=='DealingAssistance'">
+                                    PRINT ALL ({{model.PrintCount}})
+                                </button>
+                                <br />
+                                <br />
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                        <tr class="">
+                                            <th>#</th>
+                                            <th ng-hide="model.ServiceStatus!=2">Payslip No</th>
+                                            <th>Service Category</th>
+                                            <th>Issue Name</th>
+                                            <th>Quantity</th>
+                                            <th>Cost</th>
+                                            <th>Hours</th>
+                                            <th ng-hide="model.ServiceStatus == 1 || model.ServiceStatus == 3">Used Referance</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                        <tr ng-repeat="l in model.ExporterEpbServices track by $index" ng-hide="model.ServiceStatus==2 && l.Quantity>1">
+                                            <td>{{$index + 1}}</td>
+                                            <td ng-hide="model.ServiceStatus!=2">{{l.BarcodeNumber}}</td>
+                                            <td>{{getObject(l.ServiceTypeId, "Id", data.serviceTypeDropdown).Name}}</td>
+                                            <td>{{getObject(l.ServiceIssueTypeId, "Id", data.serviceIssueTypeDropdown).Name}}</td>
+                                            <td>{{l.Quantity}}</td>
+                                            <td>{{l.ServiceAmount}}</td>
+                                            <td>{{l.ServiceHour}}</td>
+                                            <td ng-hide="model.ServiceStatus == 1 || model.ServiceStatus == 3">
+                                                <div class="input-group" style="width: 200px;">
+                                                    <input type="text" class="form-control"
+                                                           ng-model="l.UsedReference"
+                                                           ng-disabled="l.IsUsed" />
+                                                    <span class="input-group-addon" style="cursor: pointer"
+                                                          ng-click="updateUsedReferance(l)"
+                                                          ng-hide="l.IsUsed">
+                                                        <i class="glyphicon glyphicon-save"></i>
+                                                    </span>
+                                                    <span class="input-group-addon"
+                                                          style="cursor: pointer"
+                                                          ng-click="updateUsedReferance(l)"
+                                                          ng-show="isLoggedIn && isSystemAdminUser">
+                                                        <i class="glyphicon glyphicon-repeat"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <button type="button"
+                                                        ng-hide="model.ServiceStatus==2"
+                                                        ng-click="remove(l)"
+                                                        class="btn btn-info btn-link glyphicon glyphicon-remove"></button>
+                                                <button  title="Delete" type="button" class="glyphicon glyphicon-trash btn btn-link"
+                                                        style="margin-right: -15px;"
+                                                        ng-hide="l.IsUsed"
+                                                        ng-href="javascript:(void)"
+                                                        ng-click="trashExporterEbpService('md',l, 'trash')"
+                                                        ng-show="user.RoleNames[0]=='SystemAdmin'"></button>
+                                                <button title="Print" type="button" class="btn btn-info btn-link glyphicon glyphicon-print"
+                                                        ng-show="model.ServiceStatus==2"
+                                                        ng-click="openPrintModal('lg',l.Id, 'service-','Service')"
+                                                        ng-disabled="((user.RoleNames[0]=='DealingAssistance' || user.RoleNames[0]=='Exporter') &&  (l.PrintCount>0 || model.PrintCount>0) ) || l.IsUsed==true">
+                                                    ({{l.PrintCount}})
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><strong>Total: </strong></td>
+                                            <td><strong>{{model.TotalServiceQuantity}}</strong></td>
+                                            <td><strong>{{model.TotalServiceAmount}}</strong></td>
+                                            <td></td>
+                                            <td ng-hide="model.ServiceStatus==2"></td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                                <br />
+                                <div class="col-sm-3" ng-show="model.ServiceStatus!=2">
+                                    <div class="form-group">
+                                        <button type="button" ui-sref="root.dashboard" class="btn btn-warning">CANCEL</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" ng-hide="model.ServiceStatus==2 || model.ServiceStatus==3">
+                                    <div class="form-group">
+                                        <button type="button" ng-click="changeState(4)" ng-disabled="isDisableMofify" class="btn btn-info pull-right">MODIFY</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" ng-hide="model.ServiceStatus==2 || model.ServiceStatus==3">
+                                    <div class="form-group">
+                                        <button type="button" ng-click="changeState(3)" class="btn btn-danger">REJECT</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 pull-right" ng-hide="model.ServiceStatus==2 || model.ServiceStatus==3">
+                                    <div class="form-group">
+                                        <button type="button" ng-click="changeState(2)" class="btn btn-success pull-right">ACCEPT</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-3 pull-right" ng-show="model.ServiceStatus==3">
+                                    <div class="form-group">
+                                        <button type="button" ng-click="changeState(1)" class="btn btn-success pull-right">MOVE TO REQUEST</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

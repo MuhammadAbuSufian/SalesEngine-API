@@ -1,0 +1,44 @@
+﻿
+<div class="row" ng-show="isLoadPagingData">
+    <div class="col-sm-2">
+        <select ng-model="pagingRequest.PageCount" ng-change="search();setPageCount()" class="form-control" ng-options="i for i in pageCounts"></select>
+    </div>
+    <div class="col-sm-10">
+        <ul class="pagination pagination-sm" style="margin-top: 5px">
+            <li>
+                <a href="javascript:;" ng-click="first()">
+                    <i class="glyphicon glyphicon-backward"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="prev()">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="next()">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="last()">
+                    <i class="glyphicon glyphicon-forward"></i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    Showing
+                    {{pagingRequest.PageCount * (pagingRequest.Page - 1) + 1}}
+                    to
+                    {{ (pagingRequest.PageCount * pagingRequest.Page < count) ? (pagingRequest.PageCount * pagingRequest.Page) : count}}
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">Page {{pagingRequest.Page}} of {{totalPages}}</a>
+            </li>
+            <li>
+                <a href="javascript:;">Total {{count}} </a>
+            </li>
+        </ul>
+    </div>
+</div>

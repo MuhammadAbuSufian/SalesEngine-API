@@ -1,0 +1,87 @@
+﻿<br />
+<div class="row" cg-busy="promise">
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Payslip Report</div>
+
+            <div class="panel-body">
+
+                <div class="col-sm-12">
+                    <form ng-submit="filter()">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Date From</label>
+                                <input type="date" class="form-control" ng-model="searchRequest.DateFrom"
+                                       ng-model-options="{timezone: 'utc+6'}" required="required">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label>Date To</label>
+                                <input type="date" class="form-control" ng-model="searchRequest.DateTo" />
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Service Hour</label>
+                                <select class="form-control" ng-model="searchRequest.ServiceHour" required ng-options="i.Id as i.Name for i in serviceHours"><option value="">Please select</option></select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>Service Office </label>
+                                <select class="form-control" ng-model="searchRequest.Keyword" ng-options="i.Id as i.Name for i in serviceOffices">
+                                    <option value="">Please Select</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <button type="submit" style="margin-top:24px" ng-hide="isUpdateMode" ng-disabled="!searchRequest.Keyword ||!searchRequest.ServiceHour" class="btn btn-success glyphicon glyphicon-search"></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-12 table-responsive">
+                    <br />
+                    <button type="button" class="btn btn-sm btn-success glyphicon glyphicon-print pull-left"
+                            ng-click="openPrintModal('lg','payslip-report-',false)">
+                        PRINT
+                    </button>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Payslip No</th>
+                                <th>Service Category</th>
+                                <th>Issue Name</th>
+                                <th>Service Amount</th>  
+                                <th>Date</th>
+                                <th>Exporter Number</th>
+                                <th>Exporter Name</th>
+                                <th>Is Used</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="l in data.list track by $index">
+                                <td>{{$index + 1}}</td>
+                                <td>{{l.BarcodeNumber}}</td>
+                                <td>{{l.ServiceType}}</td>
+                                <td>{{l.ServiceIssueType}}</td>
+                                <td>{{l.ServiceAmount}}</td>
+                                <td>{{l.Created|date}}</td>
+                                <td>{{l.ExporterNumber}}</td>
+                                <td class="text-capitalize">{{l.ExporterName}}</td>
+                                <td>{{l.PayslipIsUsed}}</td>                               
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br />
+                    <div data-ng-include="'app/views/paging.html'"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

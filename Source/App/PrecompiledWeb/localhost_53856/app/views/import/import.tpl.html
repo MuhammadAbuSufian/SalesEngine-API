@@ -1,0 +1,123 @@
+﻿<br/>
+<div class="row" cg-busy="promise">
+    <!--<h3 class="text-center text-info">This feature is not enable yet</h3>-->
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Import Transaction List (CSV)</div>
+            <div class="panel-body">
+
+                <form name="myForm" ng-submit="uploadPic(model.picFile)">
+                    <div class="row">
+
+
+                        <!-- input section -->
+                        <div class="col-sm-3">
+                            <label>Select Flle:</label>
+                            <input type="file" class="form-control"
+                                   ngf-select
+                                   ng-model="model.picFile"
+                                   accept=".csv"
+                                   ngf-max-size="20MB"
+                                   ngf-model-invalid="errorFile"
+                                   required="required">
+
+                            <i ng-show="myForm.file.$error.required" class="text-danger">* required (csv file only)</i><br>                            
+                            <!-- message section -->
+                            <!--<span class="progress" ng-show="model.picFile.progress >= 0">
+                                <span ng-style="width:{{model.picFile.progress}}%"
+                                      ng-bind="model.picFile.progress + '%'">
+                                </span>
+                            </span>
+                            <span ng-show="model.picFile.result">Upload Successful</span>
+                            <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                            <i ng-show="myForm.file.$error.maxSize">
+                                File too large
+                                {{errorFile.size / 100000000|number:1}}MB: max 2M
+                            </i>-->
+                        </div>
+
+                        <!-- remove btn -->
+                        <div class="col-sm-1">
+                            <br />
+                            <button class="btn btn-danger" style="margin-top: 4px" ng-click="model.picFile = null" ng-show="model.picFile">Remove</button>
+                        </div>
+
+                        <!-- upload btn -->
+                        <div class="col-sm-1">
+                            <br/>
+                            <button type="submit" class="btn btn-success" style="margin-top: 4px"
+                                    ng-disabled="!myForm.$valid">
+                                Upload
+                            </button>
+                        </div>
+
+                        <!-- img preview -->
+                        <div class="col-sm-3">
+                            <!--<img ng-show="myForm.file.$valid" style="width: 100%; height: 100%" ngf-thumbnail="model.picFile" class="thumb">-->
+                        </div>
+                                                                   
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <form ng-submit="filter()">
+                        <div class="col-sm-11">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="searchRequest.Keyword" required="required" placeholder="Search by Exporter ID, Transaction Id" ng-change="reset()"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-success glyphicon glyphicon-search"></button>
+                        </div>
+                        <!--<div class="col-sm-3">
+                            <div class="form-group">
+                                <input type="date" class="form-control"  ng-model="searchRequest.Date" ng-change="filter()"/>
+                            </div>
+                        </div>-->
+                    </form>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12  table-responsive">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                            <tr>
+                                <!--<th>Sl No</th>-->
+                                <th>Date</th>
+                                <th>Exporter ID</th>
+                                <th>Amount</th>
+                                <th>Transaction ID</th>
+                                <th>Imported By</th>
+                                <!--<th>Import Status</th>-->
+                                <!--<th class="text-center">Action</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="l in data.list track by $index">
+                                <!--<td>{{$index+1}}</td>-->
+                                <td>{{l.TransectionDate | date}}</td>
+                                <td>{{l.TransectionParticular}}</td>
+                                <td>{{l.Deposit}}</td>
+                                <td>{{l.TransectionId}}</td>
+                                <td>{{l.ImportedBy}}</td>
+                                <!--<td>Verified</td>-->
+                                <!--<td class="text-center">
+                                    <button type="button" ng-click="backToAccount(l)" ng-disabled="l.TransectionStatus==2" class="btn-link glyphicon glyphicon-circle-arrow-left"></button>
+                                </td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <div ng-include="'app/views/paging.html'"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

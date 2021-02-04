@@ -1,0 +1,247 @@
+﻿<div class="row">
+
+<div class="col-sm-12">
+    <div>
+        <button ui-sref="dashboard" class="btn btn-link">
+            <span class="glyphicon glyphicon-arrow-left"></span></button>
+    </div>
+</div>
+
+
+<div class="col-sm-12">
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-plus"></span> Service
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Exporter No</label>
+                                        <input type="text" class="form-control" ng-model="payslip.ExporterNo" ng-disabled="isDisabled" placeholder="Start typing exporter no and select from suggested list"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Service Type</label>
+                                        <select class="form-control">
+                                            <option value="">Select one service</option>
+                                            <option value="01">GSP Issue</option>
+                                            <option value="02">GSP Cancle</option>
+                                            <option value="03">GSP Cancle + Re-Issue</option>
+                                            <option value="04">Registration</option>
+                                            <option value="05">Registration Renewal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Quantity</label>
+                                        <input type="number" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Service Hours</label>
+                                        <select class="form-control">
+                                            <option value="">Select service hours</option>
+                                            <option value="6">6 hours</option>
+                                            <option value="12">12 hours</option>
+                                            <option value="24">24 hours</option>
+                                            <option value="36">36 hours</option>
+                                            <option value="48">48 hours</option>
+                                            <option value="72">72 hours</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-list"></span> Services
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div>
+                                        Current Balance:<strong> BDT 5000</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div>
+                                        Available Balance:<strong> BDT 1500</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-responsive">
+                            <tr class="">
+                                <th>Service Name</th>
+                                <th>Quantity</th>
+                                <th>Hours</th>
+                                <th>Amount</th>
+                                <th></th>
+                            </tr>
+
+                            <tr>
+                                <td>GSP Issue</td>
+                                <td>3</td>
+                                <td>12</td>
+                                <td>900 tk</td>
+                                <td>
+                                    <a ng-href="#">
+                                        <span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GSP Calcle</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1100 tk</td>
+                                <td>
+                                    <a ng-href="#">
+                                        <span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>GSP Calcle + Re-Issue</td>
+                                <td>1</td>
+                                <td>72</td>
+                                <td>1500 tk</td>
+                                <td>
+                                    <a ng-href="#">
+                                        <span class="glyphicon glyphicon-remove"></span></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <strong>Total</strong>
+                                </td>
+                                <td>3500 tk</td>
+
+                            </tr>
+                        </table>
+
+                        <button ng-click="save()" ng-show="user.RoleId=='1'" class="btn btn-danger pull-left">Rejected</button>
+                        <button ng-click="save()" ng-show="user.RoleId=='1'" class="btn btn-info pull-right">Approved</button>
+
+                        <button ng-click="save()" ng-show="user.RoleId=='2'" class="btn btn-danger pull-left">Delete</button>
+                        <button ng-click="save()"ng-show="user.RoleId=='2'"  class="btn btn-info pull-right">Modified</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--<div class="col-sm-12">
+    <div class="col-sm-12">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title"><span class="glyphicon glyphicon-list"></span> Approved Services
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-responsive">
+                            <tr class="">
+                                <th>Identical No</th>
+                                <th>Service Name</th>
+                                <th>Quantity</th>
+                                <th>Hours</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+
+                            <tr>
+                                <td>0125484</td>
+                                <td>GSP Issue</td>
+                                <td>1</td>
+                                <td>12</td>
+                                <td>300 tk</td>
+                                <td>Used</td>
+                            </tr>
+                            <tr>
+                                <td>0125485</td>
+                                <td>GSP Issue</td>
+                                <td>1</td>
+                                <td>12</td>
+                                <td>300 tk</td>
+                                <td>Unused</td>
+                            </tr>
+                            <tr>
+                                <td>0125486</td>
+                                <td>GSP Issue</td>
+                                <td>1</td>
+                                <td>12</td>
+                                <td>300 tk</td>
+                                <td>Unused</td>
+                            </tr>
+                            <tr>
+                                <td>0125487</td>
+                                <td>GSP Calcle</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1100 tk</td>
+                                <td>Used (A73256)</td>
+                            </tr>
+                            <tr>
+                                <td>0125488</td>
+                                <td>GSP Calcle + Re-Issue</td>
+                                <td>1</td>
+                                <td>72</td>
+                                <td>1500 tk</td>
+                                <td>Unused</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total</td>
+                                <td>3500 tk</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>-->
+
+</div>

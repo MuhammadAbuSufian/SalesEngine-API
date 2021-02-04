@@ -1,0 +1,83 @@
+﻿<br />
+<div class="row" cg-busy="promise">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row container-fluid">
+            <div class="panel-group">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="panel-title">Dashboard</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <form ng-submit="filter()">
+                                <div class="col-sm-8">
+                                    <input type="search" name="Search" ng-model="searchRequest.Keyword" ng-change="reset()" class="form-control" placeholder="Search by Request Id, Exporter No, Exporter Name, Payslip No" />
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-success" type="submit">
+                                        <span class="glyphicon glyphicon-search text-center"></span>
+                                    </button>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control" ng-model="searchRequest.ServiceStatus" ng-change="filter()" ng-options="i.Id as i.Name for i in serviceStatues"></select>
+                                </div>
+                            </form>
+                        </div>
+                        <br />
+                        <section class="row container-fluid">
+                            <!--<div class="gridStyle" ng-grid="gridOptions"></div>-->
+                            <div class="table-responsive">
+                                <table class="table table-striped table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Request ID</th>
+                                            <th>Exporter No</th>
+                                            <th>Exporter Name</th>
+                                            <th>Date</th>
+                                            <th>Quantity</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th class="text-center">Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="l in data.list">
+                                            <td>{{l.PayslipRequestId}}</td>
+                                            <td>{{l.ExporterNumber}}</td>
+                                            <td>{{l.ExporterName}}</td>
+                                            <td>{{l.ServiceRequestedDate | date}}</td>
+                                            <td>{{l.TotalServiceQuantity}}</td>
+                                            <td>{{l.TotalServiceAmount}}</td>
+                                            <td>{{l.ServiceStatusName}}</td>
+                                            <td class="text-center">
+                                                <button type="button" ng-click="detail(l.Id)" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-link glyphicon glyphicon-eye-open"></button>
+                                                <button type="button" ng-hide="{{l.Used}}" ng-href="javascript:(void)" ng-show="user.RoleNames[0]=='SystemAdmin'" ng-click="trashEpbService('md',l, 'trash')" class="btn btn-link glyphicon glyphicon-trash" title="Delete"></button>
+                                            </td>
+
+                                            <!--<td ng-if="searchRequest.Keyword.length==18" class="text-center">
+                                                <button type="button" ng-click="detail(l.Id,searchRequest.Keyword)" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-link glyphicon glyphicon-eye-open"></button>
+                                            </td>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+
+                        <br />
+                        <div data-ng-include="'app/views/paging.html'"></div>
+
+                    </div>
+
+
+                    <div class="panel-footer"></div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

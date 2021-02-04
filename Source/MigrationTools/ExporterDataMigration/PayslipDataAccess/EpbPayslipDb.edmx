@@ -1,0 +1,1638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EpbPayslipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Identity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EpbPaymentReceiptNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="AccountNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ExporterId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DepositDate" Type="datetime" Nullable="false" />
+          <Property Name="BankName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar(max)" />
+          <Property Name="TransectionNumber" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DepositorName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DepositorAddress" Type="nvarchar(max)" />
+          <Property Name="DepositorPhone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TotalAmount" Type="float" Nullable="false" />
+          <Property Name="AmountInWords" Type="nvarchar(max)" />
+          <Property Name="BankDepositSlip" Type="nvarchar(max)" />
+          <Property Name="TransectionStatus" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="PaymentMethod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetPermissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ResourceId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetResources">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Route" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsPublic" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="ServiceOffice" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EpbService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Identity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayslipRequestId" Type="nvarchar" MaxLength="20" />
+          <Property Name="ExporterId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ExporterNumber" Type="nvarchar(max)" />
+          <Property Name="ExporterName" Type="nvarchar(max)" />
+          <Property Name="ServiceRequestedDate" Type="datetime" Nullable="false" />
+          <Property Name="ServiceApprovedDate" Type="datetime" Nullable="false" />
+          <Property Name="ServiceRejectedDate" Type="datetime" Nullable="false" />
+          <Property Name="TotalServiceQuantity" Type="int" Nullable="false" />
+          <Property Name="TotalServiceAmount" Type="float" Nullable="false" />
+          <Property Name="ServiceStatus" Type="int" Nullable="false" />
+          <Property Name="InitialCurrentBalance" Type="float" Nullable="false" />
+          <Property Name="AfterServiceTakenBalance" Type="float" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="PrintCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EpbServiceLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EpbServiceId" Type="nvarchar" MaxLength="128" />
+          <Property Name="PayslipRequestId" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="UserFullName" Type="nvarchar(max)" />
+          <Property Name="ServiceStatus" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exporter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ExporterCategory" Type="int" Nullable="false" />
+          <Property Name="ExporterType" Type="nvarchar(max)" />
+          <Property Name="ExporterNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="IdentityId" Type="int" Nullable="false" />
+          <Property Name="EpbRegistrationNo" Type="nvarchar(max)" />
+          <Property Name="RegDate" Type="datetime" Nullable="false" />
+          <Property Name="RegistrationValidSince" Type="datetime" Nullable="false" />
+          <Property Name="PeriodofValidation" Type="datetime" Nullable="false" />
+          <Property Name="IsUndertakingByExporter" Type="bit" Nullable="false" />
+          <Property Name="ActiveState" Type="int" Nullable="false" />
+          <Property Name="CompanyOrFactoryName" Type="nvarchar(max)" />
+          <Property Name="CorporateAddress" Type="nvarchar(max)" />
+          <Property Name="CorporateAddressPost" Type="nvarchar(max)" />
+          <Property Name="CorporateAddressDistrict" Type="nvarchar(max)" />
+          <Property Name="CorporateAddressCountry" Type="nvarchar(max)" />
+          <Property Name="FactoryType" Type="nvarchar(max)" />
+          <Property Name="FactoryAddress" Type="nvarchar(max)" />
+          <Property Name="FactoryAddressPost" Type="nvarchar(max)" />
+          <Property Name="FactoryAddressDistrict" Type="nvarchar(max)" />
+          <Property Name="FactoryAddressCountry" Type="nvarchar(max)" />
+          <Property Name="AssociationMembershipNo" Type="nvarchar(max)" />
+          <Property Name="AssociationBinNo" Type="nvarchar(max)" />
+          <Property Name="AssociationTradeLicense" Type="nvarchar(max)" />
+          <Property Name="AssociationTinNo" Type="nvarchar(max)" />
+          <Property Name="ActivityDescription" Type="nvarchar(max)" />
+          <Property Name="IndustrialProcessDescription" Type="nvarchar(max)" />
+          <Property Name="GoodsDescription" Type="nvarchar(max)" />
+          <Property Name="HsCode" Type="nvarchar(max)" />
+          <Property Name="Bonded" Type="nvarchar(max)" />
+          <Property Name="ErcNo" Type="nvarchar(max)" />
+          <Property Name="BolRegNo" Type="nvarchar(max)" />
+          <Property Name="FireLicNo" Type="nvarchar(max)" />
+          <Property Name="BondLicNo" Type="nvarchar(max)" />
+          <Property Name="ServiceOffice" Type="int" Nullable="false" />
+          <Property Name="EpbReferenceNo" Type="int" Nullable="false" />
+          <Property Name="TotalDepositedAmount" Type="float" Nullable="false" />
+          <Property Name="TotalServiceTakenAmount" Type="float" Nullable="false" />
+          <Property Name="CurrentBalance" Type="float" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="PrimaryPersonName" Type="nvarchar(max)" />
+          <Property Name="PrimaryPersonPhone" Type="nvarchar(max)" />
+          <Property Name="PrimaryPersonAddress" Type="nvarchar(max)" />
+          <Property Name="SecondaryPersonName" Type="nvarchar(max)" />
+          <Property Name="SecondaryPersonPhone" Type="nvarchar(max)" />
+          <Property Name="SecondaryPersonAddress" Type="nvarchar(max)" />
+          <Property Name="CommercialManagerName" Type="nvarchar(max)" />
+          <Property Name="CommercialManagerPhone" Type="nvarchar(max)" />
+          <Property Name="CommercialManagerAddress" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ExporterEpbService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EpbServiceId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ExporterId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ServiceTypeId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ServiceIssueTypeId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="ServiceHour" Type="int" Nullable="false" />
+          <Property Name="ServiceAmount" Type="float" Nullable="false" />
+          <Property Name="SubitemOf" Type="nvarchar(max)" />
+          <Property Name="Identity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayslipNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="BarcodeNumber" Type="nvarchar(max)" />
+          <Property Name="PrintCount" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="BarcodeImageUrl" Type="nvarchar(max)" />
+          <Property Name="BarcodeFileName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ExporterEpbServicePrintLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="EpbServiceId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ExporterEpbServiceId" Type="nvarchar(max)" />
+          <Property Name="PayslipNumber" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="UserFullName" Type="nvarchar(max)" />
+          <Property Name="PrintStatus" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="PayslipRequestId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Import">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="TransectionId" Type="nvarchar(max)" />
+          <Property Name="TransectionDate" Type="datetime" Nullable="false" />
+          <Property Name="TransectionParticular" Type="nvarchar(max)" />
+          <Property Name="Withdraw" Type="float" Nullable="false" />
+          <Property Name="Deposit" Type="float" Nullable="false" />
+          <Property Name="Balance" Type="float" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceIssueType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ServiceTypeId" Type="nvarchar" MaxLength="128" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="NewName" Type="nvarchar(max)" />
+          <Property Name="Cost" Type="float" Nullable="false" />
+          <Property Name="IsHourlyService" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceIssueTypeHourlyCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ServiceIssueTypeId" Type="nvarchar" MaxLength="128" />
+          <Property Name="ServiceHour" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="float" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SyncSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SyncTable" Type="int" Nullable="false" />
+          <Property Name="LastSyncDate" Type="datetime" Nullable="false" />
+          <Property Name="NewSyncEntry" Type="int" Nullable="false" />
+          <Property Name="ModifiedSyncEntry" Type="int" Nullable="false" />
+          <Property Name="IsOneWaySync" Type="bit" Nullable="false" />
+          <Property Name="IsCycleComplete" Type="bit" Nullable="false" />
+          <Property Name="Take" Type="int" Nullable="false" />
+          <Property Name="Skip" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IsInitialSync" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Account_dbo_Exporter_ExporterId">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId">
+          <End Role="AspNetResources" Type="Self.AspNetResources" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetPermissions" Type="Self.AspNetPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetResources">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetPermissions">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetPermissions" Type="Self.AspNetPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetPermissions">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EpbService_dbo_Exporter_ExporterId">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EpbService" Type="Self.EpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EpbService">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId">
+          <End Role="EpbService" Type="Self.EpbService" Multiplicity="0..1" />
+          <End Role="EpbServiceLog" Type="Self.EpbServiceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EpbService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EpbServiceLog">
+              <PropertyRef Name="EpbServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId">
+          <End Role="EpbService" Type="Self.EpbService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExporterEpbService" Type="Self.ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EpbService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="EpbServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId">
+          <End Role="Exporter" Type="Self.Exporter" Multiplicity="0..1" />
+          <End Role="ExporterEpbService" Type="Self.ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId">
+          <End Role="ServiceIssueType" Type="Self.ServiceIssueType" Multiplicity="0..1" />
+          <End Role="ExporterEpbService" Type="Self.ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceIssueType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="ServiceIssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+          <End Role="ExporterEpbService" Type="Self.ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId">
+          <End Role="EpbService" Type="Self.EpbService" Multiplicity="0..1" />
+          <End Role="ExporterEpbServicePrintLog" Type="Self.ExporterEpbServicePrintLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EpbService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbServicePrintLog">
+              <PropertyRef Name="EpbServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+          <End Role="ServiceIssueType" Type="Self.ServiceIssueType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceIssueType">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId">
+          <End Role="ServiceIssueType" Type="Self.ServiceIssueType" Multiplicity="0..1" />
+          <End Role="ServiceIssueTypeHourlyCost" Type="Self.ServiceIssueTypeHourlyCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceIssueType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceIssueTypeHourlyCost">
+              <PropertyRef Name="ServiceIssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EpbPayslipDbModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetPermissions" EntityType="Self.AspNetPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetResources" EntityType="Self.AspNetResources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EpbService" EntityType="Self.EpbService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EpbServiceLog" EntityType="Self.EpbServiceLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exporter" EntityType="Self.Exporter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExporterEpbService" EntityType="Self.ExporterEpbService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExporterEpbServicePrintLog" EntityType="Self.ExporterEpbServicePrintLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Import" EntityType="Self.Import" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceIssueType" EntityType="Self.ServiceIssueType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceIssueTypeHourlyCost" EntityType="Self.ServiceIssueTypeHourlyCost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SyncSetting" EntityType="Self.SyncSetting" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Account_dbo_Exporter_ExporterId" Association="Self.FK_dbo_Account_dbo_Exporter_ExporterId">
+            <End Role="Exporter" EntitySet="Exporter" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId" Association="Self.FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId">
+            <End Role="AspNetResources" EntitySet="AspNetResources" />
+            <End Role="AspNetPermissions" EntitySet="AspNetPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetPermissions" EntitySet="AspNetPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EpbService_dbo_Exporter_ExporterId" Association="Self.FK_dbo_EpbService_dbo_Exporter_ExporterId">
+            <End Role="Exporter" EntitySet="Exporter" />
+            <End Role="EpbService" EntitySet="EpbService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId" Association="Self.FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId">
+            <End Role="EpbService" EntitySet="EpbService" />
+            <End Role="EpbServiceLog" EntitySet="EpbServiceLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId" Association="Self.FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId">
+            <End Role="EpbService" EntitySet="EpbService" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId" Association="Self.FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId">
+            <End Role="Exporter" EntitySet="Exporter" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId" Association="Self.FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId">
+            <End Role="ServiceIssueType" EntitySet="ServiceIssueType" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId" Association="Self.FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId" Association="Self.FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId">
+            <End Role="EpbService" EntitySet="EpbService" />
+            <End Role="ExporterEpbServicePrintLog" EntitySet="ExporterEpbServicePrintLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId" Association="Self.FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="ServiceIssueType" EntitySet="ServiceIssueType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId" Association="Self.FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId">
+            <End Role="ServiceIssueType" EntitySet="ServiceIssueType" />
+            <End Role="ServiceIssueTypeHourlyCost" EntitySet="ServiceIssueTypeHourlyCost" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EpbPayslipDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EpbPayslipDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="EpbPayslipDbModel.C__MigrationHistory" />
+          <EntitySet Name="Accounts" EntityType="EpbPayslipDbModel.Account" />
+          <EntitySet Name="AspNetPermissions" EntityType="EpbPayslipDbModel.AspNetPermission" />
+          <EntitySet Name="AspNetResources" EntityType="EpbPayslipDbModel.AspNetResource" />
+          <EntitySet Name="AspNetRoles" EntityType="EpbPayslipDbModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="EpbPayslipDbModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="EpbPayslipDbModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="EpbPayslipDbModel.AspNetUser" />
+          <EntitySet Name="EpbServices" EntityType="EpbPayslipDbModel.EpbService" />
+          <EntitySet Name="EpbServiceLogs" EntityType="EpbPayslipDbModel.EpbServiceLog" />
+          <EntitySet Name="Exporters" EntityType="EpbPayslipDbModel.Exporter" />
+          <EntitySet Name="ExporterEpbServices" EntityType="EpbPayslipDbModel.ExporterEpbService" />
+          <EntitySet Name="ExporterEpbServicePrintLogs" EntityType="EpbPayslipDbModel.ExporterEpbServicePrintLog" />
+          <EntitySet Name="Imports" EntityType="EpbPayslipDbModel.Import" />
+          <EntitySet Name="ServiceIssueTypes" EntityType="EpbPayslipDbModel.ServiceIssueType" />
+          <EntitySet Name="ServiceIssueTypeHourlyCosts" EntityType="EpbPayslipDbModel.ServiceIssueTypeHourlyCost" />
+          <EntitySet Name="ServiceTypes" EntityType="EpbPayslipDbModel.ServiceType" />
+          <EntitySet Name="SyncSettings" EntityType="EpbPayslipDbModel.SyncSetting" />
+          <AssociationSet Name="FK_dbo_Account_dbo_Exporter_ExporterId" Association="EpbPayslipDbModel.FK_dbo_Account_dbo_Exporter_ExporterId">
+            <End Role="Exporter" EntitySet="Exporters" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId" Association="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId">
+            <End Role="AspNetResource" EntitySet="AspNetResources" />
+            <End Role="AspNetPermission" EntitySet="AspNetPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId" Association="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetPermission" EntitySet="AspNetPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="EpbPayslipDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="EpbPayslipDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EpbService_dbo_Exporter_ExporterId" Association="EpbPayslipDbModel.FK_dbo_EpbService_dbo_Exporter_ExporterId">
+            <End Role="Exporter" EntitySet="Exporters" />
+            <End Role="EpbService" EntitySet="EpbServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId" Association="EpbPayslipDbModel.FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId">
+            <End Role="EpbService" EntitySet="EpbServices" />
+            <End Role="EpbServiceLog" EntitySet="EpbServiceLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId" Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId">
+            <End Role="EpbService" EntitySet="EpbServices" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId" Association="EpbPayslipDbModel.FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId">
+            <End Role="EpbService" EntitySet="EpbServices" />
+            <End Role="ExporterEpbServicePrintLog" EntitySet="ExporterEpbServicePrintLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId" Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId">
+            <End Role="Exporter" EntitySet="Exporters" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId" Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId">
+            <End Role="ServiceIssueType" EntitySet="ServiceIssueTypes" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId" Association="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="ExporterEpbService" EntitySet="ExporterEpbServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId" Association="EpbPayslipDbModel.FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId">
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+            <End Role="ServiceIssueType" EntitySet="ServiceIssueTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId" Association="EpbPayslipDbModel.FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId">
+            <End Role="ServiceIssueType" EntitySet="ServiceIssueTypes" />
+            <End Role="ServiceIssueTypeHourlyCost" EntitySet="ServiceIssueTypeHourlyCosts" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="EpbPayslipDbModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Identity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EpbPaymentReceiptNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DepositDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BankName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BranchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TransectionNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DepositorName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DepositorAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DepositorPhone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="AmountInWords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BankDepositSlip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TransectionStatus" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="PaymentMethod" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exporter" Relationship="EpbPayslipDbModel.FK_dbo_Account_dbo_Exporter_ExporterId" FromRole="Account" ToRole="Exporter" />
+        </EntityType>
+        <EntityType Name="AspNetPermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResourceId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetResource" Relationship="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId" FromRole="AspNetPermission" ToRole="AspNetResource" />
+          <NavigationProperty Name="AspNetRole" Relationship="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId" FromRole="AspNetPermission" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="AspNetResource">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Route" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetPermissions" Relationship="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId" FromRole="AspNetResource" ToRole="AspNetPermission" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetPermissions" Relationship="EpbPayslipDbModel.FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId" FromRole="AspNetRole" ToRole="AspNetPermission" />
+          <NavigationProperty Name="AspNetUsers" Relationship="EpbPayslipDbModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="EpbPayslipDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="EpbPayslipDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceOffice" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="EpbPayslipDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="EpbPayslipDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="EpbPayslipDbModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="EpbService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Identity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayslipRequestId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceRequestedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ServiceApprovedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ServiceRejectedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalServiceQuantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalServiceAmount" Type="Double" Nullable="false" />
+          <Property Name="ServiceStatus" Type="Int32" Nullable="false" />
+          <Property Name="InitialCurrentBalance" Type="Double" Nullable="false" />
+          <Property Name="AfterServiceTakenBalance" Type="Double" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="PrintCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exporter" Relationship="EpbPayslipDbModel.FK_dbo_EpbService_dbo_Exporter_ExporterId" FromRole="EpbService" ToRole="Exporter" />
+          <NavigationProperty Name="EpbServiceLogs" Relationship="EpbPayslipDbModel.FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId" FromRole="EpbService" ToRole="EpbServiceLog" />
+          <NavigationProperty Name="ExporterEpbServices" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId" FromRole="EpbService" ToRole="ExporterEpbService" />
+          <NavigationProperty Name="ExporterEpbServicePrintLogs" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId" FromRole="EpbService" ToRole="ExporterEpbServicePrintLog" />
+        </EntityType>
+        <EntityType Name="EpbServiceLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EpbServiceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PayslipRequestId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserFullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceStatus" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EpbService" Relationship="EpbPayslipDbModel.FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId" FromRole="EpbServiceLog" ToRole="EpbService" />
+        </EntityType>
+        <EntityType Name="Exporter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterCategory" Type="Int32" Nullable="false" />
+          <Property Name="ExporterType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityId" Type="Int32" Nullable="false" />
+          <Property Name="EpbRegistrationNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RegistrationValidSince" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PeriodofValidation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsUndertakingByExporter" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveState" Type="Int32" Nullable="false" />
+          <Property Name="CompanyOrFactoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorporateAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorporateAddressPost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorporateAddressDistrict" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CorporateAddressCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryAddressPost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryAddressDistrict" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryAddressCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationMembershipNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationBinNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationTradeLicense" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssociationTinNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IndustrialProcessDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GoodsDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HsCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bonded" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ErcNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BolRegNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FireLicNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BondLicNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceOffice" Type="Int32" Nullable="false" />
+          <Property Name="EpbReferenceNo" Type="Int32" Nullable="false" />
+          <Property Name="TotalDepositedAmount" Type="Double" Nullable="false" />
+          <Property Name="TotalServiceTakenAmount" Type="Double" Nullable="false" />
+          <Property Name="CurrentBalance" Type="Double" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="PrimaryPersonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryPersonPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryPersonAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryPersonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryPersonPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryPersonAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommercialManagerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommercialManagerPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommercialManagerAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accounts" Relationship="EpbPayslipDbModel.FK_dbo_Account_dbo_Exporter_ExporterId" FromRole="Exporter" ToRole="Account" />
+          <NavigationProperty Name="EpbServices" Relationship="EpbPayslipDbModel.FK_dbo_EpbService_dbo_Exporter_ExporterId" FromRole="Exporter" ToRole="EpbService" />
+          <NavigationProperty Name="ExporterEpbServices" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId" FromRole="Exporter" ToRole="ExporterEpbService" />
+        </EntityType>
+        <EntityType Name="ExporterEpbService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EpbServiceId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTypeId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceIssueTypeId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="ServiceHour" Type="Int32" Nullable="false" />
+          <Property Name="ServiceAmount" Type="Double" Nullable="false" />
+          <Property Name="SubitemOf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Identity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayslipNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintCount" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="BarcodeImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BarcodeFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EpbService" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId" FromRole="ExporterEpbService" ToRole="EpbService" />
+          <NavigationProperty Name="Exporter" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId" FromRole="ExporterEpbService" ToRole="Exporter" />
+          <NavigationProperty Name="ServiceIssueType" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId" FromRole="ExporterEpbService" ToRole="ServiceIssueType" />
+          <NavigationProperty Name="ServiceType" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId" FromRole="ExporterEpbService" ToRole="ServiceType" />
+        </EntityType>
+        <EntityType Name="ExporterEpbServicePrintLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EpbServiceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ExporterEpbServiceId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PayslipNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserFullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PrintStatus" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="PayslipRequestId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EpbService" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId" FromRole="ExporterEpbServicePrintLog" ToRole="EpbService" />
+        </EntityType>
+        <EntityType Name="Import">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TransectionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TransectionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TransectionParticular" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Withdraw" Type="Double" Nullable="false" />
+          <Property Name="Deposit" Type="Double" Nullable="false" />
+          <Property Name="Balance" Type="Double" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceIssueType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTypeId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="IsHourlyService" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExporterEpbServices" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId" FromRole="ServiceIssueType" ToRole="ExporterEpbService" />
+          <NavigationProperty Name="ServiceType" Relationship="EpbPayslipDbModel.FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId" FromRole="ServiceIssueType" ToRole="ServiceType" />
+          <NavigationProperty Name="ServiceIssueTypeHourlyCosts" Relationship="EpbPayslipDbModel.FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId" FromRole="ServiceIssueType" ToRole="ServiceIssueTypeHourlyCost" />
+        </EntityType>
+        <EntityType Name="ServiceIssueTypeHourlyCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceIssueTypeId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceHour" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ServiceIssueType" Relationship="EpbPayslipDbModel.FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId" FromRole="ServiceIssueTypeHourlyCost" ToRole="ServiceIssueType" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExporterEpbServices" Relationship="EpbPayslipDbModel.FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId" FromRole="ServiceType" ToRole="ExporterEpbService" />
+          <NavigationProperty Name="ServiceIssueTypes" Relationship="EpbPayslipDbModel.FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId" FromRole="ServiceType" ToRole="ServiceIssueType" />
+        </EntityType>
+        <EntityType Name="SyncSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SyncTable" Type="Int32" Nullable="false" />
+          <Property Name="LastSyncDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NewSyncEntry" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedSyncEntry" Type="Int32" Nullable="false" />
+          <Property Name="IsOneWaySync" Type="Boolean" Nullable="false" />
+          <Property Name="IsCycleComplete" Type="Boolean" Nullable="false" />
+          <Property Name="Take" Type="Int32" Nullable="false" />
+          <Property Name="Skip" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IsInitialSync" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Account_dbo_Exporter_ExporterId">
+          <End Type="EpbPayslipDbModel.Exporter" Role="Exporter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.Account" Role="Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetPermissions_dbo_AspNetResources_ResourceId">
+          <End Type="EpbPayslipDbModel.AspNetResource" Role="AspNetResource" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.AspNetPermission" Role="AspNetPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetResource">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetPermission">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetPermissions_dbo_AspNetRoles_RoleId">
+          <End Type="EpbPayslipDbModel.AspNetRole" Role="AspNetRole" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.AspNetPermission" Role="AspNetPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetPermission">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="EpbPayslipDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="EpbPayslipDbModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EpbService_dbo_Exporter_ExporterId">
+          <End Type="EpbPayslipDbModel.Exporter" Role="Exporter" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.EpbService" Role="EpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EpbService">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_EpbServiceLog_dbo_EpbService_EpbServiceId">
+          <End Type="EpbPayslipDbModel.EpbService" Role="EpbService" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.EpbServiceLog" Role="EpbServiceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EpbService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EpbServiceLog">
+              <PropertyRef Name="EpbServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_EpbService_EpbServiceId">
+          <End Type="EpbPayslipDbModel.EpbService" Role="EpbService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="EpbPayslipDbModel.ExporterEpbService" Role="ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EpbService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="EpbServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbServicePrintLog_dbo_EpbService_EpbServiceId">
+          <End Type="EpbPayslipDbModel.EpbService" Role="EpbService" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.ExporterEpbServicePrintLog" Role="ExporterEpbServicePrintLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EpbService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbServicePrintLog">
+              <PropertyRef Name="EpbServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_Exporter_ExporterId">
+          <End Type="EpbPayslipDbModel.Exporter" Role="Exporter" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.ExporterEpbService" Role="ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exporter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="ExporterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_ServiceIssueType_ServiceIssueTypeId">
+          <End Type="EpbPayslipDbModel.ServiceIssueType" Role="ServiceIssueType" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.ExporterEpbService" Role="ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceIssueType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="ServiceIssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ExporterEpbService_dbo_ServiceType_ServiceTypeId">
+          <End Type="EpbPayslipDbModel.ServiceType" Role="ServiceType" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.ExporterEpbService" Role="ExporterEpbService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExporterEpbService">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceIssueType_dbo_ServiceType_ServiceTypeId">
+          <End Type="EpbPayslipDbModel.ServiceType" Role="ServiceType" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.ServiceIssueType" Role="ServiceIssueType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceIssueType">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ServiceIssueTypeHourlyCost_dbo_ServiceIssueType_ServiceIssueTypeId">
+          <End Type="EpbPayslipDbModel.ServiceIssueType" Role="ServiceIssueType" Multiplicity="0..1" />
+          <End Type="EpbPayslipDbModel.ServiceIssueTypeHourlyCost" Role="ServiceIssueTypeHourlyCost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceIssueType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServiceIssueTypeHourlyCost">
+              <PropertyRef Name="ServiceIssueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="EpbPayslipDbModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="EpbPayslipDbModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EpbPayslipDbModelStoreContainer" CdmEntityContainer="EpbPayslipDbEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="TransectionStatus" ColumnName="TransectionStatus" />
+                <ScalarProperty Name="BankDepositSlip" ColumnName="BankDepositSlip" />
+                <ScalarProperty Name="AmountInWords" ColumnName="AmountInWords" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="DepositorPhone" ColumnName="DepositorPhone" />
+                <ScalarProperty Name="DepositorAddress" ColumnName="DepositorAddress" />
+                <ScalarProperty Name="DepositorName" ColumnName="DepositorName" />
+                <ScalarProperty Name="TransectionNumber" ColumnName="TransectionNumber" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="DepositDate" ColumnName="DepositDate" />
+                <ScalarProperty Name="ExporterId" ColumnName="ExporterId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="EpbPaymentReceiptNumber" ColumnName="EpbPaymentReceiptNumber" />
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetPermissions">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.AspNetPermission">
+              <MappingFragment StoreEntitySet="AspNetPermissions">
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetResources">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.AspNetResource">
+              <MappingFragment StoreEntitySet="AspNetResources">
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ServiceOffice" ColumnName="ServiceOffice" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EpbServices">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.EpbService">
+              <MappingFragment StoreEntitySet="EpbService">
+                <ScalarProperty Name="PrintCount" ColumnName="PrintCount" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="AfterServiceTakenBalance" ColumnName="AfterServiceTakenBalance" />
+                <ScalarProperty Name="InitialCurrentBalance" ColumnName="InitialCurrentBalance" />
+                <ScalarProperty Name="ServiceStatus" ColumnName="ServiceStatus" />
+                <ScalarProperty Name="TotalServiceAmount" ColumnName="TotalServiceAmount" />
+                <ScalarProperty Name="TotalServiceQuantity" ColumnName="TotalServiceQuantity" />
+                <ScalarProperty Name="ServiceRejectedDate" ColumnName="ServiceRejectedDate" />
+                <ScalarProperty Name="ServiceApprovedDate" ColumnName="ServiceApprovedDate" />
+                <ScalarProperty Name="ServiceRequestedDate" ColumnName="ServiceRequestedDate" />
+                <ScalarProperty Name="ExporterName" ColumnName="ExporterName" />
+                <ScalarProperty Name="ExporterNumber" ColumnName="ExporterNumber" />
+                <ScalarProperty Name="ExporterId" ColumnName="ExporterId" />
+                <ScalarProperty Name="PayslipRequestId" ColumnName="PayslipRequestId" />
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EpbServiceLogs">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.EpbServiceLog">
+              <MappingFragment StoreEntitySet="EpbServiceLog">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ServiceStatus" ColumnName="ServiceStatus" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PayslipRequestId" ColumnName="PayslipRequestId" />
+                <ScalarProperty Name="EpbServiceId" ColumnName="EpbServiceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exporters">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.Exporter">
+              <MappingFragment StoreEntitySet="Exporter">
+                <ScalarProperty Name="CommercialManagerAddress" ColumnName="CommercialManagerAddress" />
+                <ScalarProperty Name="CommercialManagerPhone" ColumnName="CommercialManagerPhone" />
+                <ScalarProperty Name="CommercialManagerName" ColumnName="CommercialManagerName" />
+                <ScalarProperty Name="SecondaryPersonAddress" ColumnName="SecondaryPersonAddress" />
+                <ScalarProperty Name="SecondaryPersonPhone" ColumnName="SecondaryPersonPhone" />
+                <ScalarProperty Name="SecondaryPersonName" ColumnName="SecondaryPersonName" />
+                <ScalarProperty Name="PrimaryPersonAddress" ColumnName="PrimaryPersonAddress" />
+                <ScalarProperty Name="PrimaryPersonPhone" ColumnName="PrimaryPersonPhone" />
+                <ScalarProperty Name="PrimaryPersonName" ColumnName="PrimaryPersonName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="TotalServiceTakenAmount" ColumnName="TotalServiceTakenAmount" />
+                <ScalarProperty Name="TotalDepositedAmount" ColumnName="TotalDepositedAmount" />
+                <ScalarProperty Name="EpbReferenceNo" ColumnName="EpbReferenceNo" />
+                <ScalarProperty Name="ServiceOffice" ColumnName="ServiceOffice" />
+                <ScalarProperty Name="BondLicNo" ColumnName="BondLicNo" />
+                <ScalarProperty Name="FireLicNo" ColumnName="FireLicNo" />
+                <ScalarProperty Name="BolRegNo" ColumnName="BolRegNo" />
+                <ScalarProperty Name="ErcNo" ColumnName="ErcNo" />
+                <ScalarProperty Name="Bonded" ColumnName="Bonded" />
+                <ScalarProperty Name="HsCode" ColumnName="HsCode" />
+                <ScalarProperty Name="GoodsDescription" ColumnName="GoodsDescription" />
+                <ScalarProperty Name="IndustrialProcessDescription" ColumnName="IndustrialProcessDescription" />
+                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+                <ScalarProperty Name="AssociationTinNo" ColumnName="AssociationTinNo" />
+                <ScalarProperty Name="AssociationTradeLicense" ColumnName="AssociationTradeLicense" />
+                <ScalarProperty Name="AssociationBinNo" ColumnName="AssociationBinNo" />
+                <ScalarProperty Name="AssociationMembershipNo" ColumnName="AssociationMembershipNo" />
+                <ScalarProperty Name="FactoryAddressCountry" ColumnName="FactoryAddressCountry" />
+                <ScalarProperty Name="FactoryAddressDistrict" ColumnName="FactoryAddressDistrict" />
+                <ScalarProperty Name="FactoryAddressPost" ColumnName="FactoryAddressPost" />
+                <ScalarProperty Name="FactoryAddress" ColumnName="FactoryAddress" />
+                <ScalarProperty Name="FactoryType" ColumnName="FactoryType" />
+                <ScalarProperty Name="CorporateAddressCountry" ColumnName="CorporateAddressCountry" />
+                <ScalarProperty Name="CorporateAddressDistrict" ColumnName="CorporateAddressDistrict" />
+                <ScalarProperty Name="CorporateAddressPost" ColumnName="CorporateAddressPost" />
+                <ScalarProperty Name="CorporateAddress" ColumnName="CorporateAddress" />
+                <ScalarProperty Name="CompanyOrFactoryName" ColumnName="CompanyOrFactoryName" />
+                <ScalarProperty Name="ActiveState" ColumnName="ActiveState" />
+                <ScalarProperty Name="IsUndertakingByExporter" ColumnName="IsUndertakingByExporter" />
+                <ScalarProperty Name="PeriodofValidation" ColumnName="PeriodofValidation" />
+                <ScalarProperty Name="RegistrationValidSince" ColumnName="RegistrationValidSince" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="EpbRegistrationNo" ColumnName="EpbRegistrationNo" />
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+                <ScalarProperty Name="ExporterNumber" ColumnName="ExporterNumber" />
+                <ScalarProperty Name="ExporterType" ColumnName="ExporterType" />
+                <ScalarProperty Name="ExporterCategory" ColumnName="ExporterCategory" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExporterEpbServices">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.ExporterEpbService">
+              <MappingFragment StoreEntitySet="ExporterEpbService">
+                <ScalarProperty Name="BarcodeFileName" ColumnName="BarcodeFileName" />
+                <ScalarProperty Name="BarcodeImageUrl" ColumnName="BarcodeImageUrl" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="PrintCount" ColumnName="PrintCount" />
+                <ScalarProperty Name="BarcodeNumber" ColumnName="BarcodeNumber" />
+                <ScalarProperty Name="PayslipNumber" ColumnName="PayslipNumber" />
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+                <ScalarProperty Name="SubitemOf" ColumnName="SubitemOf" />
+                <ScalarProperty Name="ServiceAmount" ColumnName="ServiceAmount" />
+                <ScalarProperty Name="ServiceHour" ColumnName="ServiceHour" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ServiceIssueTypeId" ColumnName="ServiceIssueTypeId" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="ExporterId" ColumnName="ExporterId" />
+                <ScalarProperty Name="EpbServiceId" ColumnName="EpbServiceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExporterEpbServicePrintLogs">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.ExporterEpbServicePrintLog">
+              <MappingFragment StoreEntitySet="ExporterEpbServicePrintLog">
+                <ScalarProperty Name="PayslipRequestId" ColumnName="PayslipRequestId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="PrintStatus" ColumnName="PrintStatus" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PayslipNumber" ColumnName="PayslipNumber" />
+                <ScalarProperty Name="ExporterEpbServiceId" ColumnName="ExporterEpbServiceId" />
+                <ScalarProperty Name="EpbServiceId" ColumnName="EpbServiceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imports">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.Import">
+              <MappingFragment StoreEntitySet="Import">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+                <ScalarProperty Name="Withdraw" ColumnName="Withdraw" />
+                <ScalarProperty Name="TransectionParticular" ColumnName="TransectionParticular" />
+                <ScalarProperty Name="TransectionDate" ColumnName="TransectionDate" />
+                <ScalarProperty Name="TransectionId" ColumnName="TransectionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceIssueTypes">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.ServiceIssueType">
+              <MappingFragment StoreEntitySet="ServiceIssueType">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="IsHourlyService" ColumnName="IsHourlyService" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="NewName" ColumnName="NewName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceIssueTypeHourlyCosts">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.ServiceIssueTypeHourlyCost">
+              <MappingFragment StoreEntitySet="ServiceIssueTypeHourlyCost">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="ServiceHour" ColumnName="ServiceHour" />
+                <ScalarProperty Name="ServiceIssueTypeId" ColumnName="ServiceIssueTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceTypes">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SyncSettings">
+            <EntityTypeMapping TypeName="EpbPayslipDbModel.SyncSetting">
+              <MappingFragment StoreEntitySet="SyncSetting">
+                <ScalarProperty Name="IsInitialSync" ColumnName="IsInitialSync" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Skip" ColumnName="Skip" />
+                <ScalarProperty Name="Take" ColumnName="Take" />
+                <ScalarProperty Name="IsCycleComplete" ColumnName="IsCycleComplete" />
+                <ScalarProperty Name="IsOneWaySync" ColumnName="IsOneWaySync" />
+                <ScalarProperty Name="ModifiedSyncEntry" ColumnName="ModifiedSyncEntry" />
+                <ScalarProperty Name="NewSyncEntry" ColumnName="NewSyncEntry" />
+                <ScalarProperty Name="LastSyncDate" ColumnName="LastSyncDate" />
+                <ScalarProperty Name="SyncTable" ColumnName="SyncTable" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="EpbPayslipDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

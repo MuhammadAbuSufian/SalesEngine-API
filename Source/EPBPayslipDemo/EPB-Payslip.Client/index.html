@@ -1,0 +1,82 @@
+﻿<!doctype html>
+<html lang="en" ng-app="psapp">
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="$rootScope.title + '  EPB Payslip'">EPB Payslip</title>
+
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/ng-grid.min.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="app/styles/style.css" />
+
+    <!-- inject:css -->
+    <!-- endinject -->
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <header ng-include="'app/views/nav.html'"></header>
+
+    <div ui-view class="container slide"></div>    
+    <div ui-view="contant" class="container slide"></div>    
+    
+    <footer ng-include="'app/views/footer.html'"></footer>
+
+
+
+
+    <!-- Scripts -->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <!-- angular -->
+    <script src="Scripts/angular.min.js"></script>   
+
+    <!-- angular-ui-bootstrap -->
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- ng-grid -->
+    <script src="Scripts/ng-grid.min.js"></script>
+
+
+    <!-- app scripts -->
+    <script src="app/scripts/app.config.js"></script>
+    <script src="app/scripts/auth/auth.config.js"></script>
+    <script src="app/scripts/dashboard/dashboard.config.js"></script>
+    <script src="app/scripts/account/account.config.js"></script>
+    <script src="app/scripts/service/service.config.js"></script>
+
+
+
+    <script src="app/scripts/auth/dataService/role.dataService.js"></script>
+    <script src="app/scripts/auth/dataService/user.dataService.js"></script>
+    <script src="app/scripts/auth/dataService/localStorage.dataService.js"></script>
+    <script src="app/scripts/auth/dataService/permission.dataService.js"></script>
+    <script src="app/scripts/auth/auth.service.js"></script>
+    <script src="app/scripts/dashboard/dashboard.service.js"></script>
+
+
+    
+    <script src="app/scripts/app.controller.js"></script>
+    <script src="app/scripts/auth/login.controller.js"></script>
+    <script src="app/scripts/dashboard/dashboard.controller.js"></script>
+    <script src="app/scripts/account/account.controller.js"></script>
+    <script src="app/scripts/service/service.controller.js"></script>
+    <!-- app scripts end -->
+
+    <!-- inject:js -->
+    <!-- endinject -->
+
+</body>
+</html>

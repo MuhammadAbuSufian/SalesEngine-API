@@ -1,0 +1,58 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Logs</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h4>Service Logs</h4>
+            <table class="table table-bordered table-condensed table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Service Request Id</th>
+                    <th>Service Status</th>
+                    <th>Action By</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="l in data.EpbServiceLogs track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{l.Created | date : 'medium'}}</td>
+                    <td>{{l.PayslipRequestId}}</td>
+                    <td>{{l.ServiceStatusName}}</td>
+                    <td>{{l.UserFullName}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <hr/>
+            <h4>Print Logs</h4>
+            <table class="table table-bordered table-condensed table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Service Request Id</th>
+                    <th>Payslip No</th>
+                    <th>Action By</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="l in data.ExporterEpbServicePrintLogs track by $index">
+                    <td>{{$index + 1}}</td>
+                    <td>{{l.Created | date : 'medium'}}</td>
+                    <td>{{l.PayslipRequestId}}</td>
+                    <td>{{l.PayslipNumber}}</td>
+                    <td>{{l.UserFullName}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <!--<button class="btn btn-primary pull-left" type="button" ng-click="ok()">Ok</button>-->
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+</div>

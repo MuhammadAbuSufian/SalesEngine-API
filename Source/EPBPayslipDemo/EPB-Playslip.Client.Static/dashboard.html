@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>EPB Payslip</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="dashboard.html">EPB Pay Slip</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="request-form.html">Submit A New Request</a>
+                    </li>
+					<li class="pull-right">
+                        <a href="index.html">Login Desk</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">              
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                
+                <div class="row container-fluid">
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title text-center">Exporter Dashboard</div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-9">
+                                    <input type="search" name="Search" class="form-control" placeholder="Search by Transection Id, Exp. No, Exporter Name, Request Id"/>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                    <button class="btn btn-primary"><span class="glyphicon glyphicon-search text-center"></span></button>
+                                </div>
+                                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                                    <select class="form-control" name="filter">
+                                        <option value="all">All</option>
+                                        <option value="01">Requested</option>
+                                        <option value="02">Submited</option>
+                                        <option value="03">Accepted</option>
+                                    </select>
+                                </div>
+                                <br/>
+                                <br/>
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td>Request Id</td>
+                                        <td>Exporter No</td>
+                                        <td>Exporter Name</td>
+                                        <td>Date</td>
+                                        <td>Transection Id</td>
+                                        <td>Amount(BDT)</td>
+                                        <td>State</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tr>
+                                        <td><a href="details.html">001</a></td>
+                                        <td>BD00001</td>
+                                        <td>Next Generation Ltd.</td>
+                                        <td>25 Oct. 2015</td>
+                                        <td>DC-30282</td>
+                                        <td>3000</td>
+                                        <td>Submited</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>002</td>
+                                        <td>BD00001</td>
+                                        <td>Next Generation Ltd.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>3000</td>
+                                        <td>Requested</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><a href="approved-details.html">003</a></td>
+                                        <td>BD00001</td>
+                                        <td>Next Generation Ltd.</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>3000</td>
+                                        <td>Approved</td>
+                                    </tr>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <a class="btn btn-primary" href="request-form.html">New Request</a>
+                </div>
+
+
+            </div>
+           
+
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

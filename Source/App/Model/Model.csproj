@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF0189B2-AD12-4349-9248-7F4140F67B99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Project.Model</RootNamespace>
+    <AssemblyName>Project.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Brand.cs" />
+    <Compile Include="BusinessDbContext.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="Enums\Framework\ActionType.cs" />
+    <Compile Include="Enums\Framework\AutogenType.cs" />
+    <Compile Include="Enums\Framework\DataType.cs" />
+    <Compile Include="Enums\Framework\DeleteActionType.cs" />
+    <Compile Include="Enums\Framework\DropdownType.cs" />
+    <Compile Include="Enums\Framework\OrderStatus.cs" />
+    <Compile Include="Enums\Framework\PagingDataType.cs" />
+    <Compile Include="Enums\Framework\SearchType.cs" />
+    <Compile Include="Enums\JournalStatus.cs" />
+    <Compile Include="Group.cs" />
+    <Compile Include="Journal.cs" />
+    <Compile Include="JournalType.cs" />
+    <Compile Include="Migrations\201901270609506_initial_create.cs" />
+    <Compile Include="Migrations\201901270609506_initial_create.Designer.cs">
+      <DependentUpon>201901270609506_initial_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901281154033_company_name_unique.cs" />
+    <Compile Include="Migrations\201901281154033_company_name_unique.Designer.cs">
+      <DependentUpon>201901281154033_company_name_unique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902102027272_pos-entity-added.cs" />
+    <Compile Include="Migrations\201902102027272_pos-entity-added.Designer.cs">
+      <DependentUpon>201902102027272_pos-entity-added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902211046106_sales-entity-modified.cs" />
+    <Compile Include="Migrations\201902211046106_sales-entity-modified.Designer.cs">
+      <DependentUpon>201902211046106_sales-entity-modified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903021617437_product-entity-updated.cs" />
+    <Compile Include="Migrations\201903021617437_product-entity-updated.Designer.cs">
+      <DependentUpon>201903021617437_product-entity-updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908091924573_customer-added.cs" />
+    <Compile Include="Migrations\201908091924573_customer-added.Designer.cs">
+      <DependentUpon>201908091924573_customer-added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910082221217_sales-table-updated-with-profit-field.cs" />
+    <Compile Include="Migrations\201910082221217_sales-table-updated-with-profit-field.Designer.cs">
+      <DependentUpon>201910082221217_sales-table-updated-with-profit-field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010070803292_discount-price-and-vendore-column-added-to-product.cs" />
+    <Compile Include="Migrations\202010070803292_discount-price-and-vendore-column-added-to-product.Designer.cs">
+      <DependentUpon>202010070803292_discount-price-and-vendore-column-added-to-product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010071123323_business-type-column-added-to-company.cs" />
+    <Compile Include="Migrations\202010071123323_business-type-column-added-to-company.Designer.cs">
+      <DependentUpon>202010071123323_business-type-column-added-to-company.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011211304035_journal and journal type added and company table modified.cs" />
+    <Compile Include="Migrations\202011211304035_journal and journal type added and company table modified.Designer.cs">
+      <DependentUpon>202011211304035_journal and journal type added and company table modified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011240631414_journal-table-modified.cs" />
+    <Compile Include="Migrations\202011240631414_journal-table-modified.Designer.cs">
+      <DependentUpon>202011240631414_journal-table-modified.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011240807258_journal-table-slice-changerd.cs" />
+    <Compile Include="Migrations\202011240807258_journal-table-slice-changerd.Designer.cs">
+      <DependentUpon>202011240807258_journal-table-slice-changerd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Permission.cs" />
+    <Compile Include="PermissionMap.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs" />
+    <Compile Include="PurchaseDetail.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="Sale.cs" />
+    <Compile Include="SalesDetail.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901270609506_initial_create.resx">
+      <DependentUpon>201901270609506_initial_create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901281154033_company_name_unique.resx">
+      <DependentUpon>201901281154033_company_name_unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902102027272_pos-entity-added.resx">
+      <DependentUpon>201902102027272_pos-entity-added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902211046106_sales-entity-modified.resx">
+      <DependentUpon>201902211046106_sales-entity-modified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903021617437_product-entity-updated.resx">
+      <DependentUpon>201903021617437_product-entity-updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908091924573_customer-added.resx">
+      <DependentUpon>201908091924573_customer-added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910082221217_sales-table-updated-with-profit-field.resx">
+      <DependentUpon>201910082221217_sales-table-updated-with-profit-field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010070803292_discount-price-and-vendore-column-added-to-product.resx">
+      <DependentUpon>202010070803292_discount-price-and-vendore-column-added-to-product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010071123323_business-type-column-added-to-company.resx">
+      <DependentUpon>202010071123323_business-type-column-added-to-company.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011211304035_journal and journal type added and company table modified.resx">
+      <DependentUpon>202011211304035_journal and journal type added and company table modified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011240631414_journal-table-modified.resx">
+      <DependentUpon>202011240631414_journal-table-modified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011240807258_journal-table-slice-changerd.resx">
+      <DependentUpon>202011240807258_journal-table-slice-changerd.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
