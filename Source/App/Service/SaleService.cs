@@ -125,7 +125,7 @@ namespace Project.Service
                 .Include(x => x.SalesDetails.Select(y => y.Product.Brand))
                 .Include(x => x.Customer);
 
-            var invoiceNo = request.Keyword.Contains("INV-");
+            var invoiceNo = request.Keyword.Contains("PB1-");
 
             if (request.Keyword == "")
             {

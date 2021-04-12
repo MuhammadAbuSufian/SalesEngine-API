@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using Project.Model;
 using Project.Repository;
@@ -14,6 +15,7 @@ namespace Project.Service
 
         GridResponseModel<PurchaseViewModel> GetGridData(GridRequestModel request);
 
+        GridResponseModel<PurchaseViewModel> GetPurchaseReportGridData(GridRequestModel request, DateTime startDate, DateTime endDate);
     }
 
     public class PurchaseService : BaseService<Purchase, PurchaseViewModel>, IPurchaseService
@@ -93,6 +95,57 @@ namespace Project.Service
             }
 
             return gridData;
+        }
+
+
+        public GridResponseModel<PurchaseViewModel> GetPurchaseReportGridData(GridRequestModel request, DateTime startDate, DateTime endDate)
+        {
+
+            GridResponseModel<PurchaseViewModel> gridData = new GridResponseModel<PurchaseViewModel>();
+
+            gridData.Count = _repository.GetAllActive(getCreatedCompanyId()).Count(x => x.Created >= startDate && x.Created <= endDate);
+
+            var query = _repository.GetAllActive(getCreatedCompanyId())
+                .Where(x => x.Created >= startDate && x.Created <= endDate)
+                .Include(x => x.PurchaseDetails)
+                .Include(x => x.PurchaseDetails.Select(y => y.Product))
+                .Include(x => x.PurchaseDetails.Select(y => y.Product.Group))
+                .Include(x => x.PurchaseDetails.Select(y => y.Product.Brand));
+
+            if (!string.IsNullOrEmpty(request.Keyword))
+            {
+                query = query.Where(x => x.InvoiceNo.Contains(request.Keyword));
+            }
+
+            if (request.IsAscending)
+            {
+                switch (request.OrderBy)
+                {
+                    case "Name": query = query.OrderBy(l => l.InvoiceNo); break;
+                    default: query = query.OrderBy(l => l.Created); break;
+                }
+            }
+            else
+            {
+                switch (request.OrderBy)
+                {
+                    case "Name": query = query.OrderByDescending(l => l.InvoiceNo); break;
+                    default: query = query.OrderByDescending(l => l.Created); break;
+                }
+            }
+
+
+            query = query.Skip(((request.Page - 1) * request.PerPageCount)).Take(request.PerPageCount);
+
+            List<Purchase> purchases = query.ToList();
+
+            foreach (var purchase in purchases)
+            {
+                gridData.Data.Add(new PurchaseViewModel(purchase));
+            }
+
+            return gridData;
+
         }
     }
 }

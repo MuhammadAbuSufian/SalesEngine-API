@@ -81,5 +81,12 @@ namespace Project.Server.Controllers
         {
             return Ok(_service.GetGridData(request));
         }
+
+        [HttpPost]
+        [Route("api/purchase/report")]
+        public IHttpActionResult GetRepost(GridRequestModel request, DateTime startDate, DateTime endDate)
+        {
+            return Ok(_service.GetPurchaseReportGridData(request, startDate, endDate));
+        }
     }
 }
