@@ -59,11 +59,13 @@
     <Compile Include="BrandService.cs" />
     <Compile Include="CompanyService.cs" />
     <Compile Include="CustomerService.cs" />
+    <Compile Include="DiscountService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="JournalService.cs" />
     <Compile Include="PermissionService.cs" />
     <Compile Include="ProductService.cs" />
+    <Compile Include="ProfitService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="PurchaseDetailsService.cs" />

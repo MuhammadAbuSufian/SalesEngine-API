@@ -43,6 +43,7 @@
     <Compile Include="BrandRequestModel.cs" />
     <Compile Include="CompanyRequestModel.cs" />
     <Compile Include="CustomerRequestModel.cs" />
+    <Compile Include="DiscountRequestModel.cs" />
     <Compile Include="EmailRequestModel.cs" />
     <Compile Include="GridRequestModel.cs" />
     <Compile Include="BaseRequestModel.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="PermissionRequestModel.cs" />
     <Compile Include="ProductRequestModel.cs" />
     <Compile Include="ProductRestoreModel.cs" />
+    <Compile Include="ProfitRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseDetailRequestModel.cs" />
     <Compile Include="PurchaseRequestModel.cs" />

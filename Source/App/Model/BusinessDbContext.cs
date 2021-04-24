@@ -61,5 +61,7 @@ namespace Project.Model
         public virtual DbSet<Journal> Journals { get; set; }
 
         public virtual DbSet<JournalType> JournalTypes { get; set; }
+        public virtual DbSet<Profit> Profits { get; set; }
+        public virtual DbSet<Discount> Discounts { get; set; }
     }
 }
