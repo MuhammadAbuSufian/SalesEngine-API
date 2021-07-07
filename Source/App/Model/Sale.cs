@@ -19,10 +19,14 @@ namespace Project.Model
         public decimal Profit { get; set; }
 
         public string CustomerId { get; set; }
+        public string ProfitId { get; set; }
 
         [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
 
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
+
+        [ForeignKey("ProfitId")]
+        public virtual Profit SalesProfit { get; set; }
     }
 }
