@@ -104,6 +104,8 @@ namespace Project.Service
             GridResponseModel<PurchaseViewModel> gridData = new GridResponseModel<PurchaseViewModel>();
 
             gridData.Count = _repository.GetAllActive(getCreatedCompanyId()).Count(x => x.Created >= startDate && x.Created <= endDate);
+            gridData.Value = _repository.GetAllActive(getCreatedCompanyId())
+                .Where(x => x.Created >= startDate && x.Created <= endDate).Sum(x => (decimal?)x.Amount) ?? 0;
 
             var query = _repository.GetAllActive(getCreatedCompanyId())
                 .Where(x => x.Created >= startDate && x.Created <= endDate)
